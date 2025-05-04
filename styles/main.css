@@ -1,0 +1,299 @@
+:root {
+  --primary: #007acc;
+  --primary-hover: #005fa3;
+  --bg: #f5f5f5;
+  --white: #ffffff;
+  --text: #222;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: var(--primary-hover);
+}
+
+input[type=password], input[type=text] {
+  width: 80%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  height: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--primary);
+  transition: width 0.5s ease-in-out;
+}
+
+.wifi {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.wifi .wifi-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.wifi .wifi-options button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.wifi .wifi-options button:hover {
+  background: var(--primary-hover);
+}
+.wifi #feedback {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.sms {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.sms .sms-message {
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+.sms .sms-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.sms .sms-options button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.sms .sms-options button:hover {
+  background: var(--primary-hover);
+}
+.sms #feedback {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.mail {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.email-simulation {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.email-simulation .clickable {
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+.email-simulation .clickable.clicked {
+  background-color: #f8d7da;
+  text-decoration: line-through;
+}
+
+#nextBtn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: #007acc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#nextBtn:hover {
+  background: #005fa3;
+}
+
+.password {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.password ul.requirements {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.password input[type=password] {
+  width: 80%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+.password button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.password button:hover {
+  background: var(--primary-hover);
+}
+.password #feedback {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.landing {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 2rem;
+  background: #fff;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.landing h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.landing p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.landing .infographic {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.landing .infographic .stat {
+  background: #f0f8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+.landing .infographic .stat h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.landing .infographic .stat p {
+  font-size: 0.9rem;
+}
+.landing button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.landing button:hover {
+  background: var(--primary-hover);
+}
+
+.result {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 2rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.result h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.result #resultText {
+  font-size: 1.8rem;
+  margin: 1.5rem 0;
+}
+.result #explanation {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.result button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.result button:hover {
+  background: var(--primary-hover);
+}/*# sourceMappingURL=main.css.map */

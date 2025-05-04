@@ -1,0 +1,45 @@
+
+.password {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  ul.requirements {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  input[type=password] {
+    width: 80%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: var(--primary-hover);
+    }
+  }
+
+  #feedback {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+  }
+}

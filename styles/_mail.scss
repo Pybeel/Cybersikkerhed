@@ -1,0 +1,42 @@
+.mail{
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.email-simulation {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px; 
+}
+
+.email-simulation .clickable {
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+.email-simulation .clickable.clicked {
+  background-color: #f8d7da;
+  text-decoration: line-through;
+}
+
+#nextBtn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: #007acc;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#nextBtn:hover {
+  background: #005fa3;
+}

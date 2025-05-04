@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scenarie 1 – Scam-mail</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  
+<main class="mail">
+
+   <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <h1>Scenarie 1 – Du har fået en mail</h1>
+    <p>Hvad virker mistænkeligt? Klik på de dele af mailen du ikke stoler på:</p>
+
+    <div class="email-simulation">
+        <p><strong>Fra:</strong> <span class="clickable" data-issue="true" data-fact="Falsk e-mailadresse: Kendes kun fra ukendt domæne.">apple@secure-free-prize.com</span></p>
+        
+        <p><strong>Emne:</strong> Du har vundet en ny iPhone 15!</p>
+        
+        <p>Kære bruger,</p>
+      
+        <p>Vi har udvalgt dig som vinder! Klik her for at få din præmie: 
+          <a href="#" class="clickable" data-issue="true" data-fact="Falsk URL: Officielle virksomheder bruger altid deres eget domæne.">http://apple.giveaway-now.net</a>
+        </p>
+      
+        <p class="clickable" data-issue="true" data-fact="Urgency trick: Phishing-mails prøver at få dig til at handle hurtigt.">TILBUD UDLØBER OM 2 TIMER!</p>
+      
+        <p>For spørgsmål, kontakt <span class="clickable" data-issue="false">support@apple.com</span>.</p>
+      
+        <p>Venlig hilsen,<span class="clickable" data-issue="false">Apple Support</span></p>
+      </div>
+      
+      <div id="clickFeedback"></div>
+      
+      <p id="overallFeedback"></p>
+      
+      <button id="nextBtn" onclick="prepareNextStep()">Videre til næste scenarie</button>
+
+      
+   </main>
+
+  <script src="js/mail.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scenarie 2 – Offentligt WiFi</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <main class="wifi">
+    
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <h1>Scenarie 2 – Offentligt WiFi</h1>
+    <p>Du sidder på en café og skal bruge internettet. Hvilken løsning vælger du?</p>
+
+    <div class="wifi-options">
+        <button onclick="chooseOption('unsafe')">Gratis offentligt WiFi</button>
+        <button onclick="chooseOption('vpn')">Offentligt WiFi med VPN</button>
+        <button onclick="chooseOption('mobile')">Brug mobilnetværk</button>
+      </div>
+      
+      <p id="feedback"></p>
+
+    <button id="nextBtn" style="display: none;" onclick="goToNextScenario()">Videre til n\u00e6ste scenarie</button>
+  </main>
+
+  <script src="js/wifi.js"></script>
+</body>
+</html>

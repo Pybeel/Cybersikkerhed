@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scenarie 4 – Mistænkelig SMS</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <main class="sms">
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <h1>Scenarie 4 – Mistænkelig SMS</h1>
+    <p>Du modtager følgende SMS:</p>
+
+    <div class="sms-message">
+      <p><strong>PostNord:</strong> Din pakke er forsinket. Bekræft dine oplysninger her:</p>
+      <a href="#">postnord-update.info</a>
+    </div>
+
+    <p>Hvad gør du?</p>
+
+    <div class="sms-options">
+      <button onclick="chooseOption('click')">Klik på linket</button>
+      <button onclick="chooseOption('delete')">Slet beskeden</button>
+      <button onclick="chooseOption('google')">Google afsenderen</button>
+    </div>
+
+    <p id="feedback"></p>
+  </main>
+
+  <script src="js/sms.js"></script>
+</body>
+</html>
