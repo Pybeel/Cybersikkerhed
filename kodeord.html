@@ -5,24 +5,193 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Scenarie 3 – Lav et stærkt kodeord</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/databrud-enhanced.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <main class="password">
-
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
     
     <h1>Scenarie 3 – Opret et stærkt kodeord</h1>
-    <p>Indtast et kodeord, der opfylder kravene for et stærkt kodeord:</p>
-
-    <input type="password" id="passwordInput" placeholder="Skriv dit kodeord her">
-    <button onclick="checkPassword()">Enter</button>
-
-    <p id="feedback"></p>
+    <p>Lær at oprette et stærkt og sikkert kodeord, der beskytter dine konti mod hackere.</p>
+    
+    <!-- Simpelt layout før feedback -->
+    <div id="initial-screen" class="password-initial-screen">
+      <div class="password-container">
+        <input type="password" id="passwordInput" placeholder="Skriv dit kodeord her" oninput="updatePasswordStrength()">
+        <button class="toggle-password" onclick="togglePasswordVisibility()">
+          <i class="fa fa-eye" id="toggleIcon"></i>
+        </button>
+      </div>
+      
+      <div class="password-strength">
+        <div class="strength-meter" id="strengthMeter"></div>
+      </div>
+      <div class="strength-text" id="strengthText">Kodeordsstyrke</div>
+      
+      <div class="password-requirements" id="live-requirements" style="display: none;">
+        <div class="requirement" id="req-length">
+          <span class="icon">❓</span>
+          <span class="text">Minimum 8 tegn</span>
+        </div>
+        <div class="requirement" id="req-uppercase">
+          <span class="icon">❓</span>
+          <span class="text">Mindst ét stort bogstav (A-Z)</span>
+        </div>
+        <div class="requirement" id="req-lowercase">
+          <span class="icon">❓</span>
+          <span class="text">Mindst ét lille bogstav (a-z)</span>
+        </div>
+        <div class="requirement" id="req-number">
+          <span class="icon">❓</span>
+          <span class="text">Mindst ét tal (0-9)</span>
+        </div>
+        <div class="requirement" id="req-special">
+          <span class="icon">❓</span>
+          <span class="text">Mindst ét specialtegn (!@#$%^&*)</span>
+        </div>
+        <div class="requirement" id="req-common">
+          <span class="icon">❓</span>
+          <span class="text">Undgå almindelige kodeord og mønstre</span>
+        </div>
+      </div>
+      
+      <div class="password-hint">
+        <p><i class="fa fa-keyboard"></i> Tryk på <strong>Enter</strong> for at kontrollere dit kodeord</p>
+      </div>
+    </div>
+    
+    <!-- Databrud-skærm med tips og feedback (vises kun ved svage kodeord) -->
+    <div id="databrud-screen" class="password-result-screen hidden" style="display: none;">
+      <div class="databrud-message">
+        <div class="warning-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h2>Databrud!</h2>
+        <p>Dit kodeord var for svagt og er blevet hacket. Din konto er nu kompromitteret.</p>
+        
+        <div class="breach-visualization">
+          <div class="breach-data">
+            <div class="breach-progress">
+              <div class="breach-bar"></div>
+            </div>
+            <p>Hacket på <span id="hack-time">få sekunder</span></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="password-requirements" id="databrud-requirements">
+        <h3>Dit kodeord opfyldte ikke disse vigtige krav:</h3>
+        <div id="failed-requirements"></div>
+      </div>
+      
+      <!-- Tips til stærke kodeord - Forenklet version -->
+      <div class="password-tips" id="passwordTips">
+        <h3>Tips til stærke kodeord</h3>
+        <p>Et godt kodeord er nemt for dig at huske, men svært for andre at gætte.</p>
+        
+        <!-- Gode råd og advarsel i en sektion -->
+        <div class="tips-content">
+          <h4 class="do-heading"><i class="fas fa-check-circle"></i> Godt kodeord:</h4>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p>Brug en sætning eller frase som udgangspunkt</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p>Erstat bogstaver med tal og symboler (f.eks. 'a' med '@')</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p>Kombiner usammenhængende ord med tal og symboler</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p>Brug mindst 12 tegn for optimal beskyttelse</p>
+          </div>
+          
+          <h4 class="dont-heading"><i class="fas fa-times-circle"></i> Dårligt kodeord:</h4>
+          <div class="tip-item bad">
+            <i class="fas fa-times-circle"></i>
+            <p>Undgå personlige oplysninger (fødselsdag, navn)</p>
+          </div>
+          <div class="tip-item bad">
+            <i class="fas fa-times-circle"></i>
+            <p>Undgå almindelige ord, mønstre og sekvenser</p>
+          </div>
+        </div>
+        
+        <!-- Eksempler i en sektion -->
+        <div class="examples">
+          <h4>Eksempler:</h4>
+          <div class="example-container">
+            <div class="example-column">
+              <h5>Stærke kodeord</h5>
+              <div class="example good">
+                <i class="fas fa-check"></i>
+                <span>M1nK@tErS0d!</span>
+              </div>
+              <div class="example good">
+                <i class="fas fa-check"></i>
+                <span>H3st!Blomst#42</span>
+              </div>
+              <div class="example good">
+                <i class="fas fa-check"></i>
+                <span>St0r-Grøn-Bænk97</span>
+              </div>
+            </div>
+            
+            <div class="example-column">
+              <h5>Svage kodeord</h5>
+              <div class="example bad">
+                <i class="fas fa-times"></i>
+                <span>password123</span>
+              </div>
+              <div class="example bad">
+                <i class="fas fa-times"></i>
+                <span>123456789</span>
+              </div>
+              <div class="example bad">
+                <i class="fas fa-times"></i>
+                <span>firkløver</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="primary-btn" id="tryAgainBtn" onclick="resetSimulation()">Prøv igen</button>
+      </div>
+    </div>
+    
+    <!-- Success-skærm med feedback og krav (vises ved stærke nok kodeord) -->
+    <div id="success-screen" class="password-result-screen hidden" style="display: none;">
+      <div class="success-message">
+        <div class="success-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h2>Godt kodeord!</h2>
+        <p>Dit kodeord er <span id="success-strength-text">stærkt nok</span> til at beskytte din konto. Her er de krav, du har opfyldt:</p>
+      </div>
+      
+      <div class="password-requirements" id="success-requirements">
+        <div id="met-requirements"></div>
+      </div>
+      
+      <div id="success-feedback"></div>
+      
+      <div class="action-buttons">
+        <button class="primary-btn" id="continueBtn" onclick="goToNextScenario()">Fortsæt til næste scenarie</button>
+      </div>
+    </div>
+    
+    <div class="confetti" id="confetti"></div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="js/kodeord.js"></script>
-
 </body>
 </html>
