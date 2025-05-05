@@ -1,31 +1,51 @@
 :root {
-  --primary: #007acc;
-  --primary-hover: #005fa3;
-  --bg: #f5f5f5;
-  --white: #ffffff;
-  --text: #222;
+  --primary: #0056b3;
+  --primary-hover: #003d7a;
+  --secondary: #2d3748;
+  --accent: #4299e1;
+  --danger: #e53e3e;
+  --success: #38a169;
+  --warning: #ed8936;
+  --bg: #f7fafc;
+  --card-bg: #ffffff;
+  --text: #1a202c;
+  --text-light: #4a5568;
+  --border: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 button {
-  padding: 1rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
   border: none;
   background: var(--primary);
   color: #fff;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 button:hover {
   background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+}
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 86, 179, 0.2);
 }
 
 input[type=password], input[type=text] {
@@ -39,18 +59,27 @@ input[type=password], input[type=text] {
 
 .progress-container {
   width: 100%;
-  background-color: #e0e0e0;
-  height: 12px;
-  border-radius: 8px;
+  background-color: var(--border);
+  height: 8px;
+  border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
-  background-color: var(--primary);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   transition: width 0.5s ease-in-out;
+  background-size: 200% 100%;
+  animation: gradientMove 2s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .wifi {
@@ -212,54 +241,153 @@ input[type=password], input[type=text] {
 }
 
 .landing {
-  max-width: 800px;
-  margin: auto;
-  margin-top: 50px;
-  padding: 2rem;
-  background: #fff;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 3rem;
+  background: var(--card-bg);
   text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logo-container i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-right: 0.75rem;
+  background: rgba(66, 153, 225, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+  letter-spacing: -0.5px;
 }
 .landing h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 .landing p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
 }
 .landing .infographic {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
 }
 .landing .infographic .stat {
-  background: #f0f8ff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: rgba(66, 153, 225, 0.08);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(66, 153, 225, 0.15);
+}
+
+.landing .infographic .stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
 }
 .landing .infographic .stat h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-weight: 700;
 }
 .landing .infographic .stat p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  color: var(--text);
 }
 .landing button {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
 .landing button:hover {
   background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.35);
+}
+
+.landing button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.25);
+}
+
+.landing button.clicked {
+  transform: scale(0.98);
+  background-color: var(--primary-hover);
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.time-estimate {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-estimate i {
+  color: var(--primary);
 }
 
 .result {

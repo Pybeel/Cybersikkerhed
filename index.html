@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lær om cybersikkerhed og beskyt dine digitale data. Tag vores øvelse og test din viden om digitale trusler.">
   <title>Velkommen - Cybersikkerhed</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -13,9 +15,14 @@
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
+    
+    <div class="logo-container">
+      <i class="fas fa-shield-alt"></i>
+      <span>Cybersikkerhed</span>
+    </div>
 
     <h1>Velkommen til din Datasikkerhedsrejse</h1>
-    <p>Cybersikkerhed handler om at beskytte dine data, din identitet og dine digitale handlinger. Trusler som phishing, datalæk og svage adgangskoder vokser hver dag. Hvor sikkert agerer du online?</p>
+    <p>Cybersikkerhed handler om at beskytte dine data, din identitet og dine digitale handlinger. Trusler som phishing, datalæk og svage adgangskoder vokser hver dag. <strong>Hvor sikkert agerer du online?</strong></p>
 
     <section class="infographic">
       <div class="stat">
@@ -36,12 +43,31 @@
       </div>
     </section>
 
-    <button onclick="startExercise()">Tag øvelsen</button>
+    <div class="cta-container">
+      <button onclick="startExercise()">
+        <i class="fas fa-play-circle"></i> Tag øvelsen
+      </button>
+      <p class="time-estimate"><i class="far fa-clock"></i> Tager kun 5 minutter</p>
+    </div>
   </main>
 
   <script>
+    // Animate the progress bar for visual effect
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('progressBar').style.width = '10%';
+      }, 500);
+    });
+    
     function startExercise() {
-      window.location.href = 'mail.html'; 
+      // Animate button when clicked
+      const button = event.currentTarget;
+      button.classList.add('clicked');
+      
+      // Redirect after a short delay for animation
+      setTimeout(function() {
+        window.location.href = 'mail.html';
+      }, 300);
     }
   </script>
 </body>
