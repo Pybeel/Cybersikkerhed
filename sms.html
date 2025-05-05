@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Scenarie 4 – Mistænkelig SMS</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/databrud-enhanced.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <main class="sms">
@@ -30,6 +32,63 @@
     </div>
 
     <p id="feedback"></p>
+    
+    <button id="result-btn" onclick="goToResult()" style="display: none;">Se resultat</button>
+    
+    <!-- Databrud-skærm (vises kun ved forkert valg) -->
+    <div id="databrud-screen" style="display: none;">
+      <div class="databrud-message">
+        <div class="warning-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h2>Databrud!</h2>
+        <p>Du har klikket på et farligt phishing-link. Din enhed og dine personlige oplysninger er nu i fare.</p>
+      </div>
+      
+      <div class="password-requirements" id="databrud-requirements">
+        <h3>Sikkerhedsrisici ved phishing:</h3>
+        <div id="failed-requirements">
+          <div class="requirement">
+            <div class="icon"><i class="fas fa-times-circle"></i></div>
+            <div class="text">Afsløring af personlige oplysninger</div>
+          </div>
+          <div class="requirement">
+            <div class="icon"><i class="fas fa-times-circle"></i></div>
+            <div class="text">Installation af skadelig software på din enhed</div>
+          </div>
+          <div class="requirement">
+            <div class="icon"><i class="fas fa-times-circle"></i></div>
+            <div class="text">Risiko for identitetstyveri</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="password-tips" id="passwordTips" style="display: block;">
+        <h3>Sådan genkender du phishing-beskeder:</h3>
+        <div class="tips-content">
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Tjek afsenderens e-mail eller telefonnummer</strong> - Officielle virksomheder bruger deres egne domæner.</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Vær skeptisk overfor links</strong> - Hold musen over links (eller tryk længe på mobil) for at se den rigtige destination.</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Se efter stavefejl og dårlig grammatik</strong> - Professionelle virksomheder har korrekturlæsere.</p>
+          </div>
+          <div class="tip-item good">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Vær opsærksom på aggressiv tone</strong> - Trusler eller ekstrem hastværk er advarselstegn.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="tryAgainBtn" onclick="window.location.reload()">Prøv igen</button>
+      </div>
+    </div>
   </main>
 
   <script src="js/sms.js"></script>
