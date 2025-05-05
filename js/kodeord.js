@@ -361,7 +361,7 @@ function checkPassword() {
   const metRequirementsCount = Object.values(requirements).filter(Boolean).length;
   
   // Beregn point baseret på de krav, der er opfyldt
-  let pointsThisScenario = metRequirementsCount * 2;
+  let pointsThisScenario = metRequirementsCount; // 1 point for hvert opfyldt krav
   
   // For svage kodeord (styrke 1-2) - vis databrud skærmen
   if (passwordStrength <= 2) {
@@ -376,6 +376,49 @@ function checkPassword() {
     // Opdater brugerens totale point
     userPoints += pointsThisScenario;
     localStorage.setItem("userPoints", userPoints);
+    
+    // Gem scenarieData i localStorage
+    let scenarieData = [];
+    try {
+      const savedData = localStorage.getItem('scenarieData');
+      if (savedData) {
+        scenarieData = JSON.parse(savedData);
+      }
+    } catch (e) {
+      console.error('Fejl ved indlæsning af scenarieData:', e);
+      scenarieData = [];
+    }
+    
+    // Find kodeord scenariet hvis det allerede eksisterer i data
+    const kodeordIndex = scenarieData.findIndex(scene => scene.navn === 'Kodeord');
+    
+    // Lav en liste af mangler baseret på ikke-opfyldte krav
+    const mangler = [];
+    if (!requirements.isLongEnough) mangler.push('Kodeord på minimum 8 tegn');
+    if (!requirements.hasUppercase) mangler.push('Store bogstaver');
+    if (!requirements.hasLowercase) mangler.push('Små bogstaver');
+    if (!requirements.hasNumber) mangler.push('Tal');
+    if (!requirements.hasSpecialChar) mangler.push('Specialtegn');
+    if (!requirements.isNotCommon) mangler.push('Undgå almindelige kodeord');
+    
+    // Opdater kodeord scenariet eller tilføj det, hvis det ikke findes
+    const kodeordScenarie = {
+      navn: 'Kodeord',
+      score: pointsThisScenario,
+      maxScore: 6,
+      tip: 'Brug komplekse kodeord med tal, specialtegn og varierende tegn.',
+      color: '#3498db',
+      mangler: mangler
+    };
+    
+    if (kodeordIndex !== -1) {
+      scenarieData[kodeordIndex] = kodeordScenarie;
+    } else {
+      scenarieData.push(kodeordScenarie);
+    }
+    
+    // Gem opdateret scenarieData
+    localStorage.setItem('scenarieData', JSON.stringify(scenarieData));
     
     // Vis success skærm med feedback
     showSuccessScreen(password, requirements, pointsThisScenario);

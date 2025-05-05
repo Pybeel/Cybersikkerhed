@@ -143,16 +143,51 @@ function chooseOption(choice) {
     localStorage.setItem("testCompleted", "true");
   } else if (choice === 'vpn') {
     feedback.innerText = "✅ Godt valg! VPN krypterer din trafik, selv på usikre netværk.";
-    userPoints++;
+    userPoints++; // 1 point for VPN
     nextBtn.style.display = 'block';
   } else if (choice === 'mobile') {
     feedback.innerText = "✅ Super valg! Mobilnetværk er meget sikrere end offentligt WiFi.";
-    userPoints++;
+    userPoints += 2; // 2 point for mobilnetværk
     nextBtn.style.display = 'block';
   }
 
   localStorage.setItem("userPoints", userPoints);
   options.style.display = 'none';
+  
+  // Gem scenarieData i localStorage
+  let scenarieData = [];
+  try {
+    const savedData = localStorage.getItem('scenarieData');
+    if (savedData) {
+      scenarieData = JSON.parse(savedData);
+    }
+  } catch (e) {
+    console.error('Fejl ved indlæsning af scenarieData:', e);
+    scenarieData = [];
+  }
+  
+  // Find wifi scenariet hvis det allerede eksisterer i data
+  const wifiIndex = scenarieData.findIndex(scene => scene.navn === 'Wifi');
+  
+  // Opdater wifi scenariet eller tilføj det, hvis det ikke findes
+  const scoreValue = choice === 'mobile' ? 2 : (choice === 'vpn' ? 1 : 0);
+  const wifiScenarie = {
+    navn: 'Wifi',
+    score: scoreValue,
+    maxScore: 2,
+    tip: 'Brug kun sikre wifi-netværk med kryptering eller VPN på offentlige netværk.',
+    color: '#2ecc71',
+    mangler: scoreValue === 2 ? [] : ['Brug af mobildata i stedet for usikret offentligt wifi']
+  };
+  
+  if (wifiIndex !== -1) {
+    scenarieData[wifiIndex] = wifiScenarie;
+  } else {
+    scenarieData.push(wifiScenarie);
+  }
+  
+  // Gem opdateret scenarieData
+  localStorage.setItem('scenarieData', JSON.stringify(scenarieData));
   
   // Kun automatisk fortsæt hvis det ikke er unsafe valg
   if (choice !== 'unsafe') {

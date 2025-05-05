@@ -56,12 +56,48 @@ function setProgress(percentage) {
       overallFeedback.innerText = "❌ Vær forsigtig! Du overså alle faresignaler.";
     } else if (correctClicks >= 1 && correctClicks < 3) {
       overallFeedback.innerText = "⚠️ Godt forsøgt! Du fandt nogle faresignaler, men overså nogle.";
+      // Giv point baseret på antal korrekte klik
+      userPoints += correctClicks;
     } else if (correctClicks === 3) {
       overallFeedback.innerText = "✅ Fantastisk! Du spottede alle faresignaler i mailen.";
-      userPoints++;
+      userPoints += correctClicks; // Giv 3 point for at finde alle
     }
   
     localStorage.setItem("userPoints", userPoints);
+    
+    // Gem scenarieData i localStorage
+    let scenarieData = [];
+    try {
+      const savedData = localStorage.getItem('scenarieData');
+      if (savedData) {
+        scenarieData = JSON.parse(savedData);
+      }
+    } catch (e) {
+      console.error('Fejl ved indlæsning af scenarieData:', e);
+      scenarieData = [];
+    }
+    
+    // Find mail scenariet hvis det allerede eksisterer i data
+    const mailIndex = scenarieData.findIndex(scene => scene.navn === 'Mail');
+    
+    // Opdater mail scenariet eller tilføj det, hvis det ikke findes
+    const mailScenarie = {
+      navn: 'Mail',
+      score: correctClicks,
+      maxScore: 3,
+      tip: 'Tjek altid afsenderens e-mailadresse og vær kritisk over for links.',
+      color: '#9b59b6',
+      mangler: correctClicks === 3 ? [] : ['Verificering af afsenders legitimitet', 'Kontrol af URL før du klikker']
+    };
+    
+    if (mailIndex !== -1) {
+      scenarieData[mailIndex] = mailScenarie;
+    } else {
+      scenarieData.push(mailScenarie);
+    }
+    
+    // Gem opdateret scenarieData
+    localStorage.setItem('scenarieData', JSON.stringify(scenarieData));
   
     // Vent 5 sekunder før vi går videre
     setTimeout(() => {

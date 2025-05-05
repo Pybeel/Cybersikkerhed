@@ -50,11 +50,11 @@ function chooseOption(choice) {
     if (choice === 'delete') {
       feedback.innerText = "✅ Godt valg! At slette beskeden beskytter dig mod svindel.";
       feedback.className = 'success';
-      userPoints++;
+      userPoints += 1; // 1 point for at slette
     } else if (choice === 'google') {
       feedback.innerText = "✅ Flot! At google afsenderen kan afsløre, om beskeden er ægte.";
       feedback.className = 'success';
-      userPoints++;
+      userPoints += 2; // 2 point for at google
     }
     
     // Vis "Se resultat" knappen
@@ -62,6 +62,41 @@ function chooseOption(choice) {
   }
 
   localStorage.setItem("userPoints", userPoints);
+  
+  // Gem scenarieData i localStorage
+  let scenarieData = [];
+  try {
+    const savedData = localStorage.getItem('scenarieData');
+    if (savedData) {
+      scenarieData = JSON.parse(savedData);
+    }
+  } catch (e) {
+    console.error('Fejl ved indlæsning af scenarieData:', e);
+    scenarieData = [];
+  }
+  
+  // Find SMS scenariet hvis det allerede eksisterer i data
+  const smsIndex = scenarieData.findIndex(scene => scene.navn === 'SMS');
+  
+  // Opdater SMS scenariet eller tilføj det, hvis det ikke findes
+  const scoreValue = choice === 'google' ? 2 : (choice === 'delete' ? 1 : 0);
+  const smsScenarie = {
+    navn: 'SMS',
+    score: scoreValue,
+    maxScore: 2,
+    tip: 'Del aldrig følsomme informationer i SMS-beskeder uden at bekræfte afsenderens identitet.',
+    color: '#e67e22',
+    mangler: scoreValue === 2 ? [] : ['Verificering af afsenderens telefonnummer før du svarer']
+  };
+  
+  if (smsIndex !== -1) {
+    scenarieData[smsIndex] = smsScenarie;
+  } else {
+    scenarieData.push(smsScenarie);
+  }
+  
+  // Gem opdateret scenarieData
+  localStorage.setItem('scenarieData', JSON.stringify(scenarieData));
 }
 
 function goToResult() {

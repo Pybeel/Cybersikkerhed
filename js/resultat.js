@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Hent brugerens point og scenariedata fra localStorage
   const points = parseInt(localStorage.getItem('userPoints')) || 0;
-  const maxPoints = 12; // maksimalt antal opnåelige point (4 scenarier med hver 3 point)
+  const maxPoints = 13; // maksimalt antal opnåelige point efter optimering
+  // Mail: 3 points (1 per clickable)
+  // Wifi: 2 points (2 for mobile, 1 for VPN)
+  // Kodeord: 6 points (1 per opfyldt krav)
+  // SMS: 2 points (2 for Google, 1 for delete)
   const percentScore = Math.round((points / maxPoints) * 100);
   
   // Hent scenariedata, hvis det er tilgængeligt, ellers brug default værdier
@@ -16,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
           navn: 'Kodeord', 
           score: 2, 
-          maxScore: 3, 
+          maxScore: 6, // Opdateret maxScore til 6 point (1 for hvert krav)
           tip: 'Brug komplekse kodeord med tal, specialtegn og varierende tegn.',
           color: '#3498db', // Blå
           mangler: ['Brug af forskellige kodeord til forskellige konti']
@@ -24,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
           navn: 'Mail', 
           score: 1, 
-          maxScore: 3, 
+          maxScore: 3, // 1 point per clickable (3 i alt)
           tip: 'Tjek altid afsenderens e-mailadresse og vær kritisk over for links.',
           color: '#9b59b6', // Lilla
           mangler: ['Verificering af afsenders legitimitet', 'Kontrol af URL før du klikker']
@@ -32,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
           navn: 'Wifi', 
           score: 2, 
-          maxScore: 3, 
+          maxScore: 2, // Opdateret maxScore til 2 point (max 2 for mobile)
           tip: 'Brug kun sikre wifi-netværk med kryptering eller VPN på offentlige netværk.',
           color: '#2ecc71', // Grøn
           mangler: ['Verificering af netværket før tilslutning']
@@ -40,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
           navn: 'SMS', 
           score: 2, 
-          maxScore: 3, 
+          maxScore: 2, // Opdateret maxScore til 2 point (max 2 for Google)
           tip: 'Del aldrig følsomme informationer i SMS-beskeder uden at bekræfte afsenderens identitet.',
           color: '#e67e22', // Orange
           mangler: ['Verificering af afsenderens telefonnummer før du svarer']
@@ -54,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { 
         navn: 'Kodeord', 
         score: Math.floor(points/4), 
-        maxScore: 3, 
+        maxScore: 6, // Opdateret til 6 point (1 per krav)
         tip: 'Brug komplekse kodeord med tal, specialtegn og varierende tegn.',
         color: '#3498db',
         mangler: ['Brug af forskellige kodeord til forskellige konti']
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { 
         navn: 'Mail', 
         score: Math.floor(points/4), 
-        maxScore: 3, 
+        maxScore: 3, // 3 point (1 per clickable)
         tip: 'Tjek altid afsenderens e-mailadresse og vær kritisk over for links.',
         color: '#9b59b6',
         mangler: ['Verificering af afsenders legitimitet', 'Kontrol af URL før du klikker']
@@ -70,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { 
         navn: 'Wifi', 
         score: Math.floor(points/4), 
-        maxScore: 3, 
+        maxScore: 2, // Opdateret til 2 point (max 2 for mobile)
         tip: 'Brug kun sikre wifi-netværk med kryptering eller VPN på offentlige netværk.',
         color: '#2ecc71',
         mangler: ['Verificering af netværket før tilslutning']
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { 
         navn: 'SMS', 
         score: Math.floor(points/4), 
-        maxScore: 3, 
+        maxScore: 2, // Opdateret til 2 point (max 2 for Google)
         tip: 'Del aldrig følsomme informationer i SMS-beskeder uden at bekræfte afsenderens identitet.',
         color: '#e67e22',
         mangler: ['Verificering af afsenderens telefonnummer før du svarer']
