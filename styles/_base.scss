@@ -62,9 +62,9 @@ $border-radius: (
 $box-shadow: (
   sm: 0 2px 5px rgba(0, 0, 0, 0.05),
   md: 0 4px 12px rgba(0, 0, 0, 0.1),
-  lg: 0 10px 30px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05),
+  lg: (0 10px 30px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05)),
   xl: 0 15px 35px rgba(0, 0, 0, 0.1)
-);
+); 
 
 $transitions: (
   fast: all 0.2s ease,
