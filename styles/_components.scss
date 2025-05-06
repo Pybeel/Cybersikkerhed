@@ -1,40 +1,146 @@
+// Base Components
 
-button {
-  padding: 1rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  border: none;
-  background: var(--primary);
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
+// Buttons
+button, .btn {
+  @include button-base;
+}
 
-  &:hover {
-    background: var(--primary-hover);
+// Standard button variants
+.btn-primary {
+  @include button-base(color(primary), color(white), color(primary-hover));
+}
+
+.btn-secondary {
+  @include button-base(color(secondary), color(white), color(secondary-hover));
+}
+
+.btn-danger {
+  @include button-base(color(danger), color(white), color(danger-hover));
+}
+
+.btn-warning {
+  @include button-base(color(warning), color(white), color(warning-hover));
+}
+
+// Gradient button variants
+.btn-gradient-primary {
+  @include button-gradient(color(primary), color(primary-hover));
+}
+
+.btn-gradient-danger {
+  @include button-gradient(color(danger), color(danger-hover));
+}
+
+.btn-gradient-success {
+  @include button-gradient(color(success), color(success-hover));
+}
+
+// Form elements
+input[type="password"], 
+input[type="text"], 
+input[type="email"], 
+input[type="number"],
+select,
+textarea {
+  width: 80%;
+  padding: spacing(2);
+  margin-bottom: spacing(3);
+  border-radius: radius(md);
+  border: 1px solid color(border);
+  font-size: font-size(lg);
+  transition: transition(fast);
+  
+  &:focus {
+    outline: none;
+    border-color: color(primary);
+    box-shadow: 0 0 0 3px rgba(color(primary), 0.2);
   }
 }
 
-input[type="password"], input[type="text"] {
-  width: 80%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1.2rem;
-}
-
+// Progress bar
 .progress-container {
   width: 100%;
-  background-color: #e0e0e0;
+  background-color: lighten(color(border), 5%);
   height: 12px;
-  border-radius: 8px;
+  border-radius: radius(md);
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: spacing(5);
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
-  background-color: var(--primary);
+  background-color: color(primary);
   transition: width 0.5s ease-in-out;
+}
+
+// Card layout
+.card {
+  @include card;
+}
+
+// Alert boxes
+.alert {
+  padding: spacing(3);
+  margin-bottom: spacing(4);
+  border-radius: radius(md);
+  border-left: 4px solid;
+  
+  &-primary {
+    background-color: rgba(color(primary), 0.1);
+    border-left-color: color(primary);
+  }
+  
+  &-success {
+    background-color: rgba(color(success), 0.1);
+    border-left-color: color(success);
+  }
+  
+  &-danger {
+    background-color: rgba(color(danger), 0.1);
+    border-left-color: color(danger);
+  }
+  
+  &-warning {
+    background-color: rgba(color(warning), 0.1);
+    border-left-color: color(warning);
+  }
+}
+
+// Badge
+.badge {
+  display: inline-block;
+  padding: spacing(1) spacing(2);
+  font-size: font-size(xs);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: radius(sm);
+  
+  &-primary {
+    background-color: color(primary);
+    color: color(white);
+  }
+  
+  &-secondary {
+    background-color: color(secondary);
+    color: color(white);
+  }
+  
+  &-danger {
+    background-color: color(danger);
+    color: color(white);
+  }
+  
+  &-success {
+    background-color: color(success);
+    color: color(white);
+  }
+  
+  &-warning {
+    background-color: color(warning);
+    color: color(white);
+  }
 }

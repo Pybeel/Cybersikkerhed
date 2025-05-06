@@ -1,59 +1,50 @@
-
 .landing {
-  max-width: 800px;
-  margin: auto;
-  margin-top: 50px;
-  padding: 2rem;
-  background: #fff;
+  @include container;
+  @include card;
   text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 
   h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: font-size(xxxl);
+    margin-bottom: spacing(3);
+    color: color(dark);
   }
 
   p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: font-size(md);
+    margin-bottom: spacing(5);
+    color: color(text-light);
   }
 
   .infographic {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: spacing(3);
+    margin-bottom: spacing(5);
 
     .stat {
-      background: #f0f8ff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      @include card(lighten(color(primary), 45%), spacing(3), radius(md), shadow(sm));
 
       h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        font-size: font-size(xxxl);
+        margin-bottom: spacing(2);
+        color: color(primary);
       }
 
       p {
-        font-size: 0.9rem;
+        font-size: font-size(sm);
+        margin-bottom: 0;
       }
     }
   }
 
   button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-
-    &:hover {
-      background: var(--primary-hover);
+    @include button-gradient;
+    margin-top: spacing(3);
+    
+    // Responsiv tilpasning ved mindre skærme
+    @include breakpoint-down(md) {
+      width: 100%;
+      padding: spacing(3) spacing(4);
     }
   }
 }

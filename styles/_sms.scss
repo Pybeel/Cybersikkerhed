@@ -1,19 +1,13 @@
-// Fælles variabler for konsistent styling
-$error-color: #e74c3c;
+// SMS side styling
 
 .sms {
-  max-width: 800px;
-  margin: auto;
-  margin-top: 50px;
-  background: #fff;
-  padding: 2.5rem;
-  border-radius: 16px;
+  @include container;
+  @include card(color(white), spacing(6), radius(xl), shadow(lg));
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05);
   position: relative;
-  transition: all 0.3s ease;
+  transition: transition(base);
 
-  /* Subtle branding element */
+  // Branding-element øverst
   &:before {
     content: '';
     position: absolute;
@@ -21,44 +15,45 @@ $error-color: #e74c3c;
     left: 0;
     width: 100%;
     height: 6px;
-    background: linear-gradient(90deg, var(--primary), darken(var(--primary), 15%));
-    border-radius: 16px 16px 0 0;
+    @include gradient-bg(color(primary), darken(color(primary), 15%));
+    border-radius: radius(xl) radius(xl) 0 0;
   }
 
+  // Typografi
   h1 {
-    color: #2c3e50;
+    color: color(dark);
     font-weight: 700;
-    margin-bottom: 0.8rem;
-    font-size: 2rem;
+    margin-bottom: spacing(2);
+    font-size: font-size(xxxl);
   }
 
   p {
-    color: #5d6778;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    color: color(text-light);
+    font-size: font-size(md);
+    margin-bottom: spacing(4);
     line-height: 1.6;
   }
 
   .sms-message {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin: 1.5rem auto;
-    font-size: 1.1rem;
+    background: color(light);
+    padding: spacing(4);
+    border-radius: radius(lg);
+    margin: spacing(4) auto;
+    font-size: font-size(md);
     max-width: 85%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    box-shadow: shadow(sm);
     text-align: left;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid color(primary);
     
     p {
-      margin-bottom: 1rem;
+      margin-bottom: spacing(3);
     }
     
     a {
-      color: $error-color;
+      color: color(danger);
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.2s ease;
+      transition: transition(fast);
       
       &:hover {
         text-decoration: underline;
@@ -67,23 +62,21 @@ $error-color: #e74c3c;
   }
 
   .sms-options {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin: 2rem 0;
+    @include flex-column;
+    gap: spacing(3);
     max-width: 85%;
-    margin: 2rem auto;
+    margin: spacing(5) auto;
 
     button {
-      padding: 1.2rem;
-      font-size: 1.2rem;
-      border-radius: 10px;
+      padding: spacing(3);
+      font-size: font-size(lg);
+      border-radius: radius(md);
       border: none;
-      background: linear-gradient(90deg, var(--primary), darken(var(--primary), 10%));
-      color: #fff;
+      @include gradient-bg(color(primary), darken(color(primary), 10%));
+      color: color(white);
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transition(base);
+      box-shadow: shadow(md);
       font-weight: 500;
       position: relative;
       overflow: hidden;
@@ -103,9 +96,9 @@ $error-color: #e74c3c;
       }
 
       &:hover {
-        background: linear-gradient(90deg, var(--primary-hover), darken(var(--primary-hover), 10%));
+        @include gradient-bg(color(primary-hover), darken(color(primary-hover), 10%));
         transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        box-shadow: shadow(lg);
       }
       
       &:active {
@@ -116,73 +109,74 @@ $error-color: #e74c3c;
   }
 
   #feedback {
-    font-size: 1.1rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s ease;
+    font-size: font-size(md);
+    margin-top: spacing(5);
+    padding: spacing(4);
+    background-color: color(light);
+    border-radius: radius(lg);
+    box-shadow: shadow(sm);
+    transition: transition(base);
     
     &.success {
-      background: rgba(46, 204, 113, 0.1);
-      border-left: 4px solid #2ecc71;
-      border-radius: 0 8px 8px 0;
+      background: rgba(color(success), 0.1);
+      border-left: 4px solid color(success);
+      border-radius: 0 radius(md) radius(md) 0;
       
       strong {
-        color: #2ecc71;
+        color: color(success);
       }
     }
     
     &.error {
-      background: rgba(231, 76, 60, 0.1);
-      border-left: 4px solid #e74c3c;
-      border-radius: 0 8px 8px 0;
+      background: rgba(color(danger), 0.1);
+      border-left: 4px solid color(danger);
+      border-radius: 0 radius(md) radius(md) 0;
       
       strong {
-        color: #e74c3c;
+        color: color(danger);
       }
     }
   }
   
   #result-btn {
-    padding: 0.9rem 2.2rem;
-    font-size: 1.1rem;
-    border-radius: 50px;
+    // Bruger en mere avanceret knap med gradient og skygge-effekter
+    padding: spacing(2) spacing(5);
+    font-size: font-size(md);
+    border-radius: radius(circle);
     border: none;
-    background: linear-gradient(to right, #3498db, #2980b9);
-    color: #fff;
+    @include gradient-bg(color(info), color(info-hover), to right);
+    color: color(white);
     cursor: pointer;
-    transition: all 0.3s;
-    margin: 1.2rem 0.6rem;
+    transition: transition(base);
+    margin: spacing(3) spacing(2);
     font-weight: 600;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 10px rgba(color(info), 0.3);
     display: none;
     
     &:hover {
-      background: linear-gradient(to right, #2980b9, #2574a9);
+      @include gradient-bg(color(info-hover), darken(color(info-hover), 5%), to right);
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+      box-shadow: 0 6px 15px rgba(color(info), 0.4);
     }
     
     &:active {
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(52, 152, 219, 0.4);
+      box-shadow: 0 3px 8px rgba(color(info), 0.4);
     }
   }
   
-  /* Databrud skærm styling - professionel design */
+  /* Databrud skærm styling - professionel cybersikkerhedsdesign */
   #databrud-screen {
-    background-color: rgba(25, 27, 31, 0.97);
-    border-radius: 12px;
-    box-shadow: 0 6px 30px rgba(255, 0, 0, 0.15), 0 0 100px rgba(255, 0, 0, 0.1);
-    padding: 2.5rem;
+    background-color: rgba(color(dark), 0.97);
+    border-radius: radius(lg);
+    box-shadow: 0 6px 30px rgba(color(danger), 0.15), 0 0 100px rgba(color(danger), 0.1);
+    padding: spacing(6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(220, 53, 69, 0.3);
+    border: 1px solid rgba(color(danger), 0.3);
     position: relative;
     overflow: hidden;
-    margin: 2rem auto;
+    margin: spacing(5) auto;
     display: none;
     
     &::before {
@@ -192,7 +186,7 @@ $error-color: #e74c3c;
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(90deg, $error-color, darken($error-color, 15%));
+      @include gradient-bg(color(danger), darken(color(danger), 15%));
       z-index: 1;
     }
     
@@ -205,14 +199,12 @@ $error-color: #e74c3c;
         position: relative;
         width: 96px;
         height: 96px;
-        margin: 0 auto 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: rgba($error-color, 0.1);
+        margin: 0 auto spacing(4);
+        @include flex-center;
+        background: rgba(color(danger), 0.1);
         border-radius: 50%;
-        border: 2px solid rgba($error-color, 0.3);
-        box-shadow: 0 0 25px rgba($error-color, 0.5);
+        border: 2px solid rgba(color(danger), 0.3);
+        box-shadow: 0 0 25px rgba(color(danger), 0.5);
         
         &::after {
           content: '';
@@ -220,37 +212,70 @@ $error-color: #e74c3c;
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          border: 2px solid rgba($error-color, 0.1);
+          border: 2px solid rgba(color(danger), 0.1);
           animation: pulse-ring 1.5s ease-out infinite;
         }
         
         i {
-          font-size: 3.5rem;
-          color: $error-color;
-          filter: drop-shadow(0 0 8px rgba($error-color, 0.5));
+          font-size: font-size(xxxxl);
+          color: color(danger);
+          filter: drop-shadow(0 0 8px rgba(color(danger), 0.5));
           animation: pulse 2s infinite;
         }
       }
       
-      h2 {
-        color: $error-color;
-        margin-bottom: 1rem;
-        font-size: 2.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-shadow: 0 0 15px rgba($error-color, 0.3);
-        position: relative;
-        display: inline-block;
-      }
+
       
-      p {
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        max-width: 85%;
-        margin: 0 auto 2rem;
-        color: rgba(255, 255, 255, 0.9);
+      .databrud-header {
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        margin-bottom: spacing(5);
+        
+        h2 {
+          color: color(danger);
+          font-size: font-size(xxxl);
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-bottom: spacing(3);
+          font-weight: 800;
+          text-shadow: 0 0 10px rgba(color(danger), 0.5);
+        }
+        
+        p {
+          color: color(light);
+          font-size: font-size(lg);
+          margin-bottom: spacing(1);
+        }
+        
+        .blink {
+          animation: blink 1s infinite;
+        }
+      }
+
+      h2 {
+        color: color(danger);
+        margin-bottom: spacing(3);
+        font-weight: 700;
+        font-size: font-size(xl);
+      }
+
+      .databrud-content {
+        background: rgba(color(dark), 0.8);
+        border-radius: radius(md);
+        padding: spacing(4);
+        color: color(light);
+        font-family: 'Courier New', monospace;
+        text-align: left;
+        line-height: 1.7;
+        font-size: font-size(md);
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid rgba(color(danger), 0.2);
+        
+        span.highlight {
+          color: color(danger);
+          font-weight: 700;
+        }
       }
     }
   }
@@ -415,31 +440,91 @@ $error-color: #e74c3c;
     }
   }
   
-  // Animationer for databrud-skærmen
+  // Animationer for cybersikkerhedstemaet
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
   @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
   }
   
   @keyframes pulse-ring {
     0% {
-      transform: scale(0.95);
-      opacity: 0.7;
+      transform: scale(0.9);
+      opacity: 0.5;
     }
     50% {
-      transform: scale(1.05);
+      transform: scale(1.1);
       opacity: 0.3;
     }
     100% {
-      transform: scale(0.95);
-      opacity: 0.7;
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+  
+  // Responsivt design
+  @include respond-to(tablet) {
+    .sms {
+      padding: spacing(4);
+      
+      h1 {
+        font-size: font-size(xxl);
+      }
+      
+      .sms-options {
+        button {
+          padding: spacing(2);
+          font-size: font-size(md);
+        }
+      }
+    }
+  }
+  
+  @include respond-to(mobile) {
+    .sms {
+      padding: spacing(3);
+      margin-top: spacing(4);
+      
+      h1 {
+        font-size: font-size(xl);
+      }
+      
+      p {
+        font-size: font-size(sm);
+      }
+      
+      .sms-message {
+        padding: spacing(3);
+        max-width: 95%;
+      }
+      
+      .sms-options {
+        max-width: 100%;
+        
+        button {
+          padding: spacing(2);
+          font-size: font-size(sm);
+        }
+      }
+      
+      #databrud-screen {
+        padding: spacing(3);
+        
+        .databrud-header h2 {
+          font-size: font-size(xl);
+        }
+        
+        .databrud-content {
+          font-size: font-size(sm);
+          padding: spacing(2);
+        }
+      }
     }
   }
 }

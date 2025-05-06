@@ -1,13 +1,13 @@
-// Styling for the result page that matches the databrud styling
+// Resultatside styling - matchende cybersikkerhedstemaet
+// Vi bruger variabler fra _base.scss i stedet for hardkodede værdier
 
-// Variables
-$error-color: #e74c3c;
-$warning-color: #f39c12;
-$success-color: #2ecc71;
-$text-color: rgba(255, 255, 255, 0.95);
-$text-secondary: rgba(255, 255, 255, 0.8);
-$bg-card: rgba(15, 17, 21, 0.6);
-$border-light: rgba(255, 255, 255, 0.1);
+// Lokale referencer til globale variabler for nemmere brug
+$bg-card: rgba(15, 17, 21, 0.6); // Bevarer præcis samme farve som originalen
+$border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
+
+:root {
+  --primary-rgb: 0, 86, 179;
+}
 
 .result-container {
   max-width: 800px;
@@ -26,7 +26,7 @@ $border-light: rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
   text-align: center;
-  color: $text-color;
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 0.2px;
   line-height: 1.6;
   
@@ -37,7 +37,7 @@ $border-light: rgba(255, 255, 255, 0.1);
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, $error-color, darken($error-color, 15%));
+    background: linear-gradient(90deg, #e74c3c, darken(#e74c3c, 15%));
     z-index: 1;
   }
   
@@ -45,23 +45,22 @@ $border-light: rgba(255, 255, 255, 0.1);
     animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
   }
   
+  // Databrud message sektion
   .databrud-message {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: spacing(6);
     position: relative;
     
     .warning-icon {
       position: relative;
       width: 96px;
       height: 96px;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba($error-color, 0.1);
+      margin: 0 auto spacing(4);
+      @include flex-center;
+      background: rgba(color(danger), 0.1);
       border-radius: 50%;
-      border: 2px solid rgba($error-color, 0.3);
-      box-shadow: 0 0 25px rgba($error-color, 0.5);
+      border: 2px solid rgba(color(danger), 0.3);
+      box-shadow: 0 0 25px rgba(color(danger), 0.5);
       
       &::after {
         content: '';
@@ -69,61 +68,61 @@ $border-light: rgba(255, 255, 255, 0.1);
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        border: 2px solid rgba($error-color, 0.1);
+        border: 2px solid rgba(color(danger), 0.1);
         animation: pulse-ring 1.5s ease-out infinite;
       }
       
       i {
-        font-size: 3.5rem;
-        color: $error-color;
-        filter: drop-shadow(0 0 8px rgba($error-color, 0.5));
+        font-size: font-size(xxxxl);
+        color: color(danger);
+        filter: drop-shadow(0 0 8px rgba(color(danger), 0.5));
         animation: pulse 2s infinite;
       }
     }
     
     h2 {
-      color: $error-color;
-      margin-bottom: 1rem;
-      font-size: 2.8rem;
+      color: color(danger);
+      margin-bottom: spacing(3);
+      font-size: font-size(xxxl);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      text-shadow: 0 0 15px rgba($error-color, 0.3);
+      text-shadow: 0 0 15px rgba(color(danger), 0.3);
       position: relative;
       display: inline-block;
     }
     
     #resultText {
-      margin-bottom: 1.5rem;
-      font-size: 1.25rem;
+      margin-bottom: spacing(4);
+      font-size: font-size(lg);
       line-height: 1.6;
       max-width: 85%;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto spacing(4);
       font-weight: 500;
     }
     
     #explanation {
-      font-size: 1.1rem;
+      font-size: font-size(md);
       line-height: 1.6;
       max-width: 85%;
-      margin: 0 auto 1.5rem;
-      color: $text-secondary;
+      margin: 0 auto spacing(4);
+      color: rgba(color(white), 0.8);
       font-weight: 400;
     }
   }
   
   // Breach Visualization styling
   .breach-visualization {
-    margin-bottom: 2.5rem;
+    margin-bottom: spacing(6);
     max-width: 500px;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto spacing(6);
     
     .breach-data {
-      padding: 1.5rem;
+      padding: spacing(4);
       background-color: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      border: 1px solid rgba(220, 53, 69, 0.3);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-radius: radius(md);
+      border: 1px solid rgba(color(danger), 0.3);
+      box-shadow: shadow(md);
       position: relative;
       overflow: hidden;
       
@@ -142,9 +141,9 @@ $border-light: rgba(255, 255, 255, 0.1);
       .breach-progress {
         height: 12px;
         background-color: rgba(20, 20, 20, 0.5);
-        border-radius: 6px;
+        border-radius: radius(sm);
         overflow: hidden;
-        margin-bottom: 0.75rem;
+        margin-bottom: spacing(2);
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
         position: relative;
         z-index: 1;
@@ -154,39 +153,33 @@ $border-light: rgba(255, 255, 255, 0.1);
       .breach-bar {
         height: 100%;
         width: 0%;
-        background: linear-gradient(90deg, $error-color, darken($error-color, 15%));
-        box-shadow: 0 0 8px rgba($error-color, 0.5);
-        transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
-        position: relative;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
-        }
+        @include gradient-bg(color(danger), darken(color(danger), 15%));
+        box-shadow: 0 0 8px rgba(color(danger), 0.5);
+        animation: breach-grow 2.5s ease-out forwards;
       }
       
-      p {
-        margin: 0;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.9);
-        text-align: right;
-        font-weight: 500;
-        position: relative;
-        z-index: 1;
+      .breach-label {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
+        margin-bottom: spacing(3);
+        font-size: font-size(sm);
+        color: rgba(color(white), 0.8);
         
-        span {
-          font-weight: 700;
-          color: $error-color;
-          margin-left: 5px;
-          text-shadow: 0 0 5px rgba($error-color, 0.3);
+        .breach-title {
+          font-weight: 500;
+        }
+        
+        .breach-count {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          span {
+            font-weight: 700;
+            color: color(danger);
+            margin-left: 5px;
+            text-shadow: 0 0 5px rgba(color(danger), 0.3);
+          }
         }
       }
     }
@@ -194,21 +187,21 @@ $border-light: rgba(255, 255, 255, 0.1);
   
   // Performance Summary styling
   .performance-summary {
-    margin-bottom: 2.8rem;
+    margin-bottom: spacing(7);
     background: $bg-card;
-    border-radius: 10px;
-    padding: 2rem;
+    border-radius: radius(md);
+    padding: spacing(5);
     border: 1px solid $border-light;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: shadow(md);
     
     h3 {
-      font-size: 1.8rem;
+      font-size: font-size(xxl);
       margin-top: 0;
-      margin-bottom: 1.8rem;
-      color: #fff;
+      margin-bottom: spacing(5);
+      color: color(white);
       font-weight: 700;
       position: relative;
-      padding-bottom: 0.75rem;
+      padding-bottom: spacing(2);
       text-align: center;
       letter-spacing: 0.5px;
       
@@ -220,121 +213,124 @@ $border-light: rgba(255, 255, 255, 0.1);
         transform: translateX(-50%);
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, $error-color, darken($error-color, 15%));
+        @include gradient-bg(color(success), darken(color(success), 15%));
       }
     }
     
-    .scenarios-container {
+    .scenarie-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1.75rem;
+      gap: spacing(4);
+      margin-top: spacing(4);
       
-      @media (max-width: 768px) {
+      @include respond-to(tablet) {
         grid-template-columns: 1fr;
       }
     }
     
     .scenarie-card {
       background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: radius(md);
+      padding: spacing(4);
+      border: 1px solid rgba(color(white), 0.08);
+      transition: transition(fast);
       
       &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-      
-      &.status-danger {
-        border-left: 3px solid $error-color;
-        
-        .score-bar {
-          background: linear-gradient(90deg, $error-color, darken($error-color, 15%));
-        }
+        box-shadow: shadow(lg);
       }
       
       &.status-warning {
-        border-left: 3px solid $warning-color;
+        border-left: 3px solid color(warning);
         
         .score-bar {
-          background: linear-gradient(90deg, $warning-color, darken($warning-color, 15%));
+          @include gradient-bg(color(warning), darken(color(warning), 15%));
+        }
+      }
+      
+      &.status-danger {
+        border-left: 3px solid color(danger);
+        
+        .score-bar {
+          @include gradient-bg(color(danger), darken(color(danger), 15%));
         }
       }
       
       &.status-success {
-        border-left: 3px solid $success-color;
+        border-left: 3px solid color(success);
         
         .score-bar {
-          background: linear-gradient(90deg, $success-color, darken($success-color, 15%));
+          @include gradient-bg(color(success), darken(color(success), 15%));
         }
       }
       
       .scenarie-header {
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
+        margin-bottom: spacing(3);
         
         i {
-          font-size: 1.5rem;
-          margin-right: 0.75rem;
+          font-size: font-size(xl);
+          margin-right: spacing(2);
           
           &.fa-times-circle {
-            color: $error-color;
+            color: color(danger);
           }
           
-          &.fa-exclamation-circle {
-            color: $warning-color;
+          &.fa-exclamation-triangle {
+            color: color(warning);
           }
           
           &.fa-check-circle {
-            color: $success-color;
+            color: color(success);
           }
         }
         
-        h4 {
-          margin: 0;
-          font-size: 1.3rem;
+        .scenarie-title {
+          font-size: font-size(md);
           font-weight: 600;
-          color: #fff;
-          letter-spacing: 0.3px;
+          margin: 0;
+          color: color(white);
         }
       }
       
-      .score-bar-container {
-        height: 8px;
-        background-color: rgba(20, 20, 20, 0.5);
-        border-radius: 4px;
-        overflow: hidden;
-        margin-bottom: 0.5rem;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
-      
-      .score-bar {
-        height: 100%;
-        width: 0%;
-        transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-      }
-      
-      .score-text {
-        text-align: right;
-        font-size: 1rem;
-        color: $text-secondary;
-        margin-top: 0.75rem;
-        font-weight: 500;
+      .score-container {
+        margin-top: spacing(3);
+        
+        .score-progress {
+          height: 8px;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: radius(sm);
+          overflow: hidden;
+          margin-bottom: spacing(2);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .score-bar {
+          height: 100%;
+          width: 0%;
+          box-shadow: shadow(sm);
+        }
+        
+        .score-text {
+          text-align: right;
+          font-size: font-size(sm);
+          color: rgba(color(white), 0.8);
+          margin-top: spacing(2);
+          font-weight: 500;
+        }
       }
     }
   }
   
-  // Results Dashboard styling
+  /* Resultat Dashboard Styling */
   .results-dashboard {
     margin-bottom: 2.8rem;
-    background: $bg-card;
+    background: rgba(15, 17, 21, 0.6);
     border-radius: 10px;
     padding: 2rem;
-    border: 1px solid $border-light;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     
     h3 {
@@ -356,7 +352,7 @@ $border-light: rgba(255, 255, 255, 0.1);
         transform: translateX(-50%);
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, #3498db, darken(#3498db, 15%));
+        background: linear-gradient(90deg, #3498db, #2980b9);
       }
     }
     
@@ -364,8 +360,10 @@ $border-light: rgba(255, 255, 255, 0.1);
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      
-      @media (max-width: 768px) {
+    }
+    
+    @media (max-width: 768px) {
+      .dashboard-content {
         flex-direction: column;
       }
     }
@@ -384,6 +382,25 @@ $border-light: rgba(255, 255, 255, 0.1);
       width: 200px;
       height: 200px;
       margin-bottom: 1.5rem;
+      border-radius: 50%;
+    }
+    
+    // Chart center styling fra den originale HTML
+    .chart-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      background-color: rgba(25, 27, 31, 0.9);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
     
     .chart-legend {
@@ -392,24 +409,25 @@ $border-light: rgba(255, 255, 255, 0.1);
       justify-content: center;
       gap: 1rem;
       margin-top: 1rem;
-      
-      .legend-item {
-        display: flex;
-        align-items: center;
-        margin-right: 1rem;
-        
-        .color-box {
-          width: 16px;
-          height: 16px;
-          border-radius: 4px;
-          margin-right: 0.5rem;
-        }
-        
-        .legend-text {
-          font-size: 0.9rem;
-          color: $text-secondary;
-        }
-      }
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .color-box {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+    }
+    
+    .legend-text {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
     }
     
     .results-summary {
@@ -424,104 +442,118 @@ $border-light: rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      
-      .score-title {
-        font-size: 1.2rem;
-        color: $text-secondary;
-        margin-bottom: 0.75rem;
-      }
-      
-      .score-value {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        
-        &.score-high {
-          color: $success-color;
-        }
-        
-        &.score-medium {
-          color: $warning-color;
-        }
-        
-        &.score-low {
-          color: $error-color;
-        }
-      }
-      
-      .score-label {
-        font-size: 1.1rem;
-        color: $text-secondary;
-      }
     }
     
-    .improvement-areas {
-      .improvement-title {
-        font-size: 1.2rem;
-        color: #fff;
-        margin-bottom: 1rem;
-        text-align: center;
-        font-weight: 600;
-      }
-      
-      .missing-item {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        margin-bottom: 1rem;
-        border-left: 3px solid $warning-color;
-        display: flex;
-        align-items: flex-start;
-        
-        &:hover {
-          background: rgba(0, 0, 0, 0.3);
-        }
-        
-        .missing-icon {
-          margin-right: 1rem;
-          color: $warning-color;
-          font-size: 1.1rem;
-          padding-top: 0.1rem;
-        }
-        
-        .missing-content {
-          flex: 1;
-          
-          h4 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-          }
-          
-          p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: $text-secondary;
-            line-height: 1.5;
-          }
-        }
-      }
+    .score-title {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.75rem;
+    }
+    
+    .score-value {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    .score-value.score-high {
+      color: #2ecc71;
+    }
+    
+    .score-value.score-medium {
+      color: #f39c12;
+    }
+    
+    .score-value.score-low {
+      color: #e74c3c;
+    }
+    
+    .score-label {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    // Improvement Areas Styling
+    .improvement-areas .improvement-title {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .missing-item {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid #f39c12;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .missing-item:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .missing-icon {
+      margin-right: 1rem;
+      color: #f39c12;
+      font-size: 1.1rem;
+      padding-top: 0.1rem;
+    }
+    
+    .missing-content {
+      flex: 1;
+    }
+    
+    .missing-content h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .missing-content p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+    
+    .no-missing {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .no-missing p {
+      margin-top: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .score-label {
+      font-size: font-size(md);
+      color: rgba(color(white), 0.8);
     }
   }
-
-  // Security Tips styling
+  
+  // Sikkerhedstips styling
   .security-tips {
-    margin-bottom: 2.8rem;
+    margin-bottom: spacing(7);
     background: $bg-card;
-    border-radius: 10px;
-    padding: 2rem;
+    border-radius: radius(md);
+    padding: spacing(5);
     border: 1px solid $border-light;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: shadow(md);
     
     h3 {
-      font-size: 1.8rem;
+      font-size: font-size(xxl);
       margin-top: 0;
-      margin-bottom: 1.8rem;
-      color: #fff;
+      margin-bottom: spacing(5);
+      color: color(white);
       font-weight: 700;
       position: relative;
-      padding-bottom: 0.75rem;
+      padding-bottom: spacing(2);
       text-align: center;
       letter-spacing: 0.5px;
       
@@ -533,17 +565,17 @@ $border-light: rgba(255, 255, 255, 0.1);
         transform: translateX(-50%);
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, $success-color, darken($success-color, 15%));
+        @include gradient-bg(color(success), darken(color(success), 15%));
       }
     }
     
     .tips-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1.75rem;
+      gap: spacing(4);
+      margin-top: spacing(4);
       
-      @media (max-width: 768px) {
+      @include respond-to(tablet) {
         grid-template-columns: 1fr;
       }
     }
@@ -552,19 +584,19 @@ $border-light: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: flex-start;
       background: rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: radius(md);
+      padding: spacing(4);
+      border: 1px solid rgba(color(white), 0.08);
+      transition: transition(fast);
       
       &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: shadow(lg);
       }
       
       &.personlig-tip {
-        border-left: 3px solid $warning-color;
-        background: rgba(243, 156, 18, 0.1);
+        border-left: 3px solid color(warning);
+        background: rgba(color(warning), 0.1);
       }
       
       .tip-icon {
@@ -572,15 +604,13 @@ $border-light: rgba(255, 255, 255, 0.1);
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        margin-right: 1rem;
+        @include flex-center;
+        background: rgba(color(white), 0.1);
+        margin-right: spacing(3);
         
         i {
-          font-size: 1.2rem;
-          color: $success-color;
+          font-size: font-size(md);
+          color: color(success);
         }
       }
       
@@ -588,18 +618,18 @@ $border-light: rgba(255, 255, 255, 0.1);
         flex: 1;
         
         h4 {
-          margin: 0 0 0.8rem 0;
-          font-size: 1.2rem;
+          margin: 0 0 spacing(2) 0;
+          font-size: font-size(md);
           font-weight: 600;
-          color: #fff;
+          color: color(white);
           letter-spacing: 0.2px;
         }
         
         p {
           margin: 0;
-          font-size: 1.05rem;
+          font-size: font-size(sm);
           line-height: 1.5;
-          color: $text-secondary;
+          color: rgba(color(white), 0.8);
           font-weight: 400;
         }
       }
@@ -607,59 +637,58 @@ $border-light: rgba(255, 255, 255, 0.1);
     
     .no-tips {
       text-align: center;
-      padding: 2rem;
-      background: rgba(46, 204, 113, 0.1);
-      border-radius: 8px;
+      padding: spacing(5);
+      background: rgba(color(success), 0.1);
+      border-radius: radius(md);
       
       i {
-        font-size: 3rem;
-        color: $success-color;
-        margin-bottom: 1rem;
+        font-size: font-size(xxxl);
+        color: color(success);
+        margin-bottom: spacing(3);
       }
       
       p {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.9);
+        font-size: font-size(md);
+        color: rgba(color(white), 0.9);
       }
     }
   }
   
   // Action buttons styling
   .action-buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
+    margin-top: spacing(5);
+    @include flex-center;
     flex-wrap: wrap;
     
     button.primary-btn {
-      padding: 0.9rem 2.2rem;
-      font-size: 1.1rem;
-      border-radius: 50px;
+      padding: spacing(2) spacing(5);
+      font-size: font-size(md);
+      border-radius: radius(circle);
       border: none;
-      background: linear-gradient(to right, var(--primary), darken(var(--primary), 10%));
-      color: #fff;
+      @include gradient-bg(color(primary), darken(color(primary), 10%), to right);
+      color: color(white);
       cursor: pointer;
-      transition: all 0.3s;
-      margin: 1.2rem 0.6rem;
+      transition: transition(base);
+      margin: spacing(3) spacing(2);
       font-weight: 600;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.3);
+      box-shadow: 0 4px 10px rgba(color(primary), 0.3);
 
       &:hover {
-        background: linear-gradient(to right, darken(var(--primary), 5%), darken(var(--primary), 15%));
+        @include gradient-bg(darken(color(primary), 5%), darken(color(primary), 15%), to right);
         transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.4);
+        box-shadow: 0 6px 15px rgba(color(primary), 0.4);
       }
       
       &:active {
         transform: translateY(-1px);
-        box-shadow: 0 3px 8px rgba(var(--primary-rgb), 0.4);
+        box-shadow: 0 3px 8px rgba(color(primary), 0.4);
       }
     }
   }
 }
 
-// Animations
+// Animationer
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
@@ -678,3 +707,72 @@ $border-light: rgba(255, 255, 255, 0.1);
   30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
   40%, 60% { transform: translate3d(4px, 0, 0); }
 }
+
+@keyframes breach-grow {
+  0% { width: 0%; }
+  100% { width: 94%; }
+}
+
+// Responsivt design
+@include respond-to(tablet) {
+  .result {
+    padding: spacing(4);
+    
+    .databrud-message {
+      h2 {
+        font-size: font-size(xxl);
+      }
+      
+      #resultText, #explanation {
+        max-width: 95%;
+      }
+    }
+    
+    .performance-summary, 
+    .results-dashboard,
+    .security-tips {
+      padding: spacing(3);
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  .result-container {
+    margin-top: spacing(4);
+  }
+  
+  .result {
+    padding: spacing(3);
+    
+    .databrud-message {
+      h2 {
+        font-size: font-size(xl);
+      }
+      
+      #resultText {
+        font-size: font-size(md);
+      }
+      
+      #explanation {
+        font-size: font-size(sm);
+      }
+      
+      .warning-icon {
+        width: 80px;
+        height: 80px;
+        
+        i {
+          font-size: font-size(xxxl);
+        }
+      }
+    }
+    
+    .action-buttons {
+      button.primary-btn {
+        width: 100%;
+        margin: spacing(2) 0;
+      }
+    }
+  }
+}
+

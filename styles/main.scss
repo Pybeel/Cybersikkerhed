@@ -1,6 +1,9 @@
-
+// Importer basissystemer først
 @import 'base';
+@import 'mixins';
 @import 'components';
+
+// Importer komponentspecifikke stilarter
 @import 'wifi';
 @import 'sms';
 @import 'mail';
