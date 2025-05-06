@@ -142,13 +142,104 @@ function chooseOption(choice) {
     // Opdater localStorage til at markere testen som afsluttet
     localStorage.setItem("testCompleted", "true");
   } else if (choice === 'vpn') {
-    feedback.innerText = "✅ Godt valg! VPN krypterer din trafik, selv på usikre netværk.";
+    feedback.innerHTML = `
+      <div class="success-message">
+        <div class="success-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="success-content">
+          <h3>Godt valg!</h3>
+          <p>VPN krypterer din trafik, selv på usikre netværk.</p>
+          <div class="security-meter">
+            <div class="meter-label">Sikkerhedsniveau:</div>
+            <div class="meter-bar">
+              <div class="meter-fill vpn-level"></div>
+            </div>
+            <div class="meter-value">God</div>
+          </div>
+          <div class="success-details">
+            <div class="detail-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Din data er krypteret</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Din IP-adresse er skjult</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    feedback.className = 'success';
     userPoints++; // 1 point for VPN
-    nextBtn.style.display = 'block';
+    
+    // Styled next button
+    nextBtn.className = 'next-btn vpn-next';
+    nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Videre til næste scenarie';
+    
+    // Animated display
+    setTimeout(() => {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.transform = 'translateY(0)';
+    }, 1000);
+    
+    // Animate security meter
+    setTimeout(() => {
+      const meterFill = document.querySelector('.meter-fill.vpn-level');
+      if (meterFill) meterFill.style.width = '75%';
+    }, 100);
+    
   } else if (choice === 'mobile') {
-    feedback.innerText = "✅ Super valg! Mobilnetværk er meget sikrere end offentligt WiFi.";
+    feedback.innerHTML = `
+      <div class="success-message">
+        <div class="success-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="success-content">
+          <h3>Super valg!</h3>
+          <p>Mobilnetværk er meget sikrere end offentligt WiFi.</p>
+          <div class="security-meter">
+            <div class="meter-label">Sikkerhedsniveau:</div>
+            <div class="meter-bar">
+              <div class="meter-fill mobile-level"></div>
+            </div>
+            <div class="meter-value">Meget Høj</div>
+          </div>
+          <div class="success-details">
+            <div class="detail-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Krypteret forbindelse</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Personlig forbindelse</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Stærkere autentificering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    feedback.className = 'success';
     userPoints += 2; // 2 point for mobilnetværk
-    nextBtn.style.display = 'block';
+    
+    // Styled next button
+    nextBtn.className = 'next-btn mobile-next';
+    nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Videre til næste scenarie';
+    
+    // Animated display
+    setTimeout(() => {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.transform = 'translateY(0)';
+    }, 1000);
+    
+    // Animate security meter
+    setTimeout(() => {
+      const meterFill = document.querySelector('.meter-fill.mobile-level');
+      if (meterFill) meterFill.style.width = '95%';
+    }, 100);
   }
 
   localStorage.setItem("userPoints", userPoints);

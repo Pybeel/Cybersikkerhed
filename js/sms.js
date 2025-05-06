@@ -48,17 +48,101 @@ function chooseOption(choice) {
   } else {
     // Korrekt valg - vis "Se resultat" knappen
     if (choice === 'delete') {
-      feedback.innerText = "✅ Godt valg! At slette beskeden beskytter dig mod svindel.";
+      feedback.innerHTML = `
+        <div class="success-message">
+          <div class="success-icon">
+            <i class="fas fa-trash-alt"></i>
+          </div>
+          <div class="success-content">
+            <h3>Godt valg!</h3>
+            <p>At slette mistænkelige beskeder uden at klikke på links er en sikker praksis der beskytter dig mod svindel.</p>
+            <div class="security-meter">
+              <div class="meter-label">Sikkerhedsniveau:</div>
+              <div class="meter-bar">
+                <div class="meter-fill delete-level"></div>
+              </div>
+              <div class="meter-value">God</div>
+            </div>
+            <div class="success-details">
+              <div class="detail-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Undgår phishing-forsøg</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Beskytter personlige data</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
       feedback.className = 'success';
       userPoints += 1; // 1 point for at slette
+      
+      // Animate security meter
+      setTimeout(() => {
+        const meterFill = document.querySelector('.meter-fill.delete-level');
+        if (meterFill) meterFill.style.width = '70%';
+      }, 100);
+      
     } else if (choice === 'google') {
-      feedback.innerText = "✅ Flot! At google afsenderen kan afsløre, om beskeden er ægte.";
+      feedback.innerHTML = `
+        <div class="success-message">
+          <div class="success-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="success-content">
+            <h3>Excellent valg!</h3>
+            <p>At verificere afsenderen ved at søge information online er den sikreste tilgang til mistænkelige beskeder.</p>
+            <div class="security-meter">
+              <div class="meter-label">Sikkerhedsniveau:</div>
+              <div class="meter-bar">
+                <div class="meter-fill google-level"></div>
+              </div>
+              <div class="meter-value">Meget Høj</div>
+            </div>
+            <div class="success-details">
+              <div class="detail-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Aktiv verifikation</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Finder legitime kontaktpunkter</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Identificerer kendte svindelforsøg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
       feedback.className = 'success';
       userPoints += 2; // 2 point for at google
+      
+      // Animate security meter
+      setTimeout(() => {
+        const meterFill = document.querySelector('.meter-fill.google-level');
+        if (meterFill) meterFill.style.width = '95%';
+      }, 100);
     }
     
-    // Vis "Se resultat" knappen
+    // Vis "Se resultat" knappen med komplet inline styling
+    resultBtn.innerHTML = 'Se resultat';
+    
+    // Anvender alle styles direkte for at undgå CSS-kompileringsproblemer
     resultBtn.style.display = 'inline-block';
+    resultBtn.style.marginTop = '2rem';
+    resultBtn.style.padding = '0.75rem 2rem';
+    resultBtn.style.fontSize = '1.1rem';
+    resultBtn.style.background = 'linear-gradient(to right, #007acc, #005fa3)';
+    resultBtn.style.color = 'white';
+    resultBtn.style.border = 'none';
+    resultBtn.style.borderRadius = '8px';
+    resultBtn.style.cursor = 'pointer';
+    resultBtn.style.fontWeight = '600';
+    resultBtn.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
   }
 
   localStorage.setItem("userPoints", userPoints);
