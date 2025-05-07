@@ -238,7 +238,7 @@ function chooseOption(choice) {
     // Animate security meter
     setTimeout(() => {
       const meterFill = document.querySelector('.meter-fill.mobile-level');
-      if (meterFill) meterFill.style.width = '95%';
+      if (meterFill) meterFill.style.width = '100%';
     }, 100);
   }
 

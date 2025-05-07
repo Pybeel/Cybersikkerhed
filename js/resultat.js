@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // SMS: 2 points (2 for Google, 1 for delete)
   const percentScore = Math.round((points / maxPoints) * 100);
   
-  // Hent scenariedata, hvis det er tilgængeligt, ellers brug default værdier
+  // Hent scenariedata
   let scenarieData = [];
   try {
     const savedData = localStorage.getItem('scenarieData');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           maxScore: 2, // Opdateret maxScore til 2 point (max 2 for Google)
           tip: 'Del aldrig følsomme informationer i SMS-beskeder uden at bekræfte afsenderens identitet.',
           color: '#e67e22', // Orange
-          mangler: ['Verificering af afsenderens telefonnummer før du svarer']
+          mangler: ['Verificering af afsenderens telefonnummer og rapporter nummeret']
         }
       ];
     }
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         maxScore: 2, // Opdateret til 2 point (max 2 for Google)
         tip: 'Del aldrig følsomme informationer i SMS-beskeder uden at bekræfte afsenderens identitet.',
         color: '#e67e22',
-        mangler: ['Verificering af afsenderens telefonnummer før du svarer']
+        mangler: ['Verificering af afsenderens telefonnummer og rapportér']
       }
     ];
   }
@@ -116,6 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
     securityLevel.innerText = "Kritisk lav";
     resultIcon.classList.remove('fa-exclamation-triangle');
     resultIcon.classList.add('fa-skull-crossbones');
+    document.documentElement.style.setProperty('--result-border-color', 'rgba(231, 76, 60, 0.3)');
+    document.documentElement.style.setProperty('--result-gradient', 'linear-gradient(90deg, #e74c3c, #c0392b)');
+    document.documentElement.style.setProperty('--result-bg', 'rgba(231, 76, 60, 0.1)');
+    document.documentElement.style.setProperty('--result-shadow', '0 0 25px rgba(231, 76, 60, 0.5)');
+    document.documentElement.style.setProperty('--result-border-color-light', 'rgba(231, 76, 60, 0.1)');
+    document.documentElement.style.setProperty('--result-color', '#e74c3c');
+    document.documentElement.style.setProperty('--result-icon-shadow', 'drop-shadow(0 0 8px rgba(231, 76, 60, 0.5))');
     setProgress(totalPercent);
     animateDataBreach();
   } else if (totalPercent <= 66) {
@@ -123,6 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
     resultTitle.innerText = "RISIKOVURDERET";
     resultTitle.style.color = "#f39c12";
     resultText.innerText = "Din score viser moderat risikoniveau.";
+    document.documentElement.style.setProperty('--result-border-color', 'rgba(243, 156, 18, 0.3)');
+    document.documentElement.style.setProperty('--result-gradient', 'linear-gradient(90deg, #f39c12, #d68910)');
+    document.documentElement.style.setProperty('--result-bg', 'rgba(243, 156, 18, 0.1)');
+    document.documentElement.style.setProperty('--result-shadow', '0 0 25px rgba(243, 156, 18, 0.5)');
+    document.documentElement.style.setProperty('--result-border-color-light', 'rgba(243, 156, 18, 0.1)');
+    document.documentElement.style.setProperty('--result-color', '#f39c12');
+    document.documentElement.style.setProperty('--result-icon-shadow', 'drop-shadow(0 0 8px rgba(243, 156, 18, 0.5))')
     explanation.innerText = "Du tog flere gode valg, men også nogle risikable. Vær opmærksom på detaljerne fremover for at øge din sikkerhed.";
     securityLevel.innerText = "Moderat";
     resultIcon.classList.remove('fa-exclamation-triangle');
@@ -130,10 +144,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resultIcon.style.color = "#f39c12";
     setProgress(totalPercent);
   } else {
-    // Sikker resultat
+    // Sikker bruger
     resultTitle.innerText = "SIKKER BRUGER";
     resultTitle.style.color = "#2ecc71";
-    resultText.innerText = "Din score viser højt sikkerhedsniveau.";
+    resultText.innerText = "Godt klaret! Du har vist god forståelse for cybersikkerhed.";
+    document.documentElement.style.setProperty('--result-border-color', 'rgba(46, 204, 113, 0.3)');
+    document.documentElement.style.setProperty('--result-gradient', 'linear-gradient(90deg, #2ecc71, #27ae60)');
+    document.documentElement.style.setProperty('--result-bg', 'rgba(46, 204, 113, 0.1)');
+    document.documentElement.style.setProperty('--result-shadow', '0 0 25px rgba(46, 204, 113, 0.5)');
+    document.documentElement.style.setProperty('--result-border-color-light', 'rgba(46, 204, 113, 0.1)');
+    document.documentElement.style.setProperty('--result-color', '#2ecc71');
+    document.documentElement.style.setProperty('--result-icon-shadow', 'drop-shadow(0 0 8px rgba(46, 204, 113, 0.5))')
     explanation.innerText = "Fantastisk arbejde! Du navigerede sikkert gennem alle scenarier og beskyttede dine data effektivt.";
     securityLevel.innerText = "Høj";
     resultIcon.classList.remove('fa-exclamation-triangle');

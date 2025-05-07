@@ -20,7 +20,7 @@ function chooseOption(choice) {
   const options = document.querySelector('.sms-options');
   const resultBtn = document.getElementById('result-btn');
   const databrudScreen = document.getElementById('databrud-screen');
-  const smsMessage = document.querySelector('.sms-message');
+  const smsMessage = document.querySelector('.phone-frame');
   
   // Få fat i instruktionsteksterne
   const paragraphs = document.querySelectorAll('main.sms > p');

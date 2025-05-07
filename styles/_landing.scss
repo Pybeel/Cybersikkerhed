@@ -16,6 +16,36 @@
     color: color(text-light);
   }
 
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: spacing(4);
+    
+    i {
+      font-size: 2.5rem;
+      color: color(primary);
+      margin-right: spacing(2);
+    }
+    
+    span {
+      font-size: font-size(xl);
+      font-weight: 700;
+      color: color(dark);
+      letter-spacing: 0.5px;
+    }
+    
+    @include breakpoint-down(sm) {
+      i {
+        font-size: 2rem;
+      }
+      
+      span {
+        font-size: font-size(lg);
+      }
+    }
+  }
+
   .infographic {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -94,11 +124,18 @@
 
       p {
         font-size: 1.05rem;
-        line-height: 1.5;
+        line-height: 1.6;
         color: color(text);
         margin-bottom: 0;
         font-weight: 500;
         max-width: 90%;
+        position: relative;
+        z-index: 1;
+        
+        strong {
+          color: color(primary);
+          font-weight: 600;
+        }
         
         .source {
           display: block;
@@ -107,6 +144,11 @@
           color: color(text-light);
           font-weight: 400;
           opacity: 0.8;
+          transition: opacity 0.3s ease;
+          
+          &:hover {
+            opacity: 1;
+          }
         }
       }
     }

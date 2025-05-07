@@ -38,8 +38,10 @@ function setProgress(percentage) {
         el.classList.add('clicked');
         correctClicks++;
         clickFeedback.innerText = "✅ Rigtigt! " + factText;
+        clickFeedback.className = 'visible success';
       } else {
         clickFeedback.innerText = "❌ Dette var faktisk legitimt.";
+        clickFeedback.className = 'visible error';
         el.style.backgroundColor = '#d1ecf1';
       }
   

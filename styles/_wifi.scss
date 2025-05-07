@@ -53,7 +53,7 @@ $error-color: #e74c3c;
       font-size: 1.2rem;
       border-radius: 10px;
       border: none;
-      background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+      @include gradient-bg(color(primary), darken(color(primary), 10%));
       color: #fff;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -77,7 +77,7 @@ $error-color: #e74c3c;
       }
 
       &:hover {
-        background: linear-gradient(90deg, var(--primary-hover), var(--secondary));
+        @include gradient-bg(color(primary-hover), darken(color(primary-hover), 10%));
         transform: translateY(-2px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
       }

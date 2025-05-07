@@ -19,22 +19,44 @@
     <p>Hvad virker mistænkeligt? Klik på de dele af mailen du ikke stoler på:</p>
 
     <div class="email-simulation">
-        <p><strong>Fra:</strong> <span class="clickable" data-issue="true" data-fact="Falsk e-mailadresse: Kendes kun fra ukendt domæne.">apple@secure-free-prize.com</span></p>
+        <div class="email-header">
+            <div class="email-metadata">
+                <div class="email-field">
+                    <span class="field-label">Fra:</span>
+                    <span class="field-value clickable" data-issue="true" data-fact="Falsk e-mailadresse: Kendes kun fra ukendt domæne.">apple@secure-free-prize.com</span>
+                </div>
+                <div class="email-field">
+                    <span class="field-label">Til:</span>
+                    <span class="field-value">dig@email.com</span>
+                </div>
+                <div class="email-field">
+                    <span class="field-label">Emne:</span>
+                    <span class="field-value">Du har vundet en ny iPhone 15!</span>
+                </div>
+                <div class="email-field">
+                    <span class="field-label">Dato:</span>
+                    <span class="field-value">7. maj 2025 14:32</span>
+                </div>
+            </div>
+        </div>
         
-        <p><strong>Emne:</strong> Du har vundet en ny iPhone 15!</p>
+        <div class="email-body">
+            <p>Kære bruger,</p>
         
-        <p>Kære bruger,</p>
-      
-        <p>Vi har udvalgt dig som vinder! Klik her for at få din præmie: 
-          <a href="#" class="clickable" data-issue="true" data-fact="Falsk URL: Officielle virksomheder bruger altid deres eget domæne.">http://apple.giveaway-now.net</a>
-        </p>
-      
-        <p class="clickable" data-issue="true" data-fact="Urgency trick: Phishing-mails prøver at få dig til at handle hurtigt.">TILBUD UDLØBER OM 2 TIMER!</p>
-      
-        <p>For spørgsmål, kontakt <span class="clickable" data-issue="false">support@apple.com</span>.</p>
-      
-        <p>Venlig hilsen, Apple Support<span class="clickable" data-issue="true" data-fact="Grammatikfejl: Manglende mellemrum efter komma er ofte et tegn på phishing-mails, da de typisk ikke overholder sproglige konventioner."></span></p>
-      </div>
+            <p>Vi har udvalgt dig som vinder! Klik her for at få din præmie: 
+                <a href="#" class="clickable" data-issue="true" data-fact="Falsk URL: Officielle virksomheder bruger altid deres eget domæne.">http://apple.giveaway-now.net</a>
+            </p>
+        
+            <p class="urgency-message clickable" data-issue="true" data-fact="Urgency trick: Phishing-mails prøver at få dig til at handle hurtigt.">TILBUD UDLØBER OM 2 TIMER!</p>
+        
+            <p>For spørgsmål, kontakt <span class="clickable" data-issue="false">support@apple.com</span>.</p>
+        
+            <div class="email-signature">
+                <p>Venlig hilsen,<br>Apple Support<span class="clickable" data-issue="true" data-fact="Grammatikfejl: Manglende mellemrum efter komma er ofte et tegn på phishing-mails, da de typisk ikke overholder sproglige konventioner."></span></p>
+                <img src="images/apple-logo.png" alt="Apple Logo" class="signature-logo">
+            </div>
+        </div>
+    </div>
       
       <div id="clickFeedback"></div>
       

@@ -5,6 +5,13 @@
 $bg-card: rgba(15, 17, 21, 0.6); // Bevarer præcis samme farve som originalen
 $border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
 
+// Resultat status farver
+$status-colors: (
+  success: #28a745, // Sikker bruger
+  warning: #ffc107, // Moderat sikker
+  danger: #dc3545   // Usikker bruger
+);
+
 :root {
   --primary-rgb: 0, 86, 179;
 }
@@ -22,7 +29,7 @@ $border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15), 0 0 100px rgba(0, 0, 0, 0.1);
   padding: 2.5rem;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(220, 53, 69, 0.3);
+  border: 1px solid var(--result-border-color, rgba(220, 53, 69, 0.3));
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -37,7 +44,7 @@ $border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #e74c3c, darken(#e74c3c, 15%));
+    background: var(--result-gradient, linear-gradient(90deg, #e74c3c, darken(#e74c3c, 15%)));
     z-index: 1;
   }
   
@@ -57,10 +64,10 @@ $border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
       height: 96px;
       margin: 0 auto spacing(4);
       @include flex-center;
-      background: rgba(color(danger), 0.1);
+      background: var(--result-bg, rgba(color(danger), 0.1));
       border-radius: 50%;
-      border: 2px solid rgba(color(danger), 0.3);
-      box-shadow: 0 0 25px rgba(color(danger), 0.5);
+      border: 2px solid var(--result-border-color, rgba(color(danger), 0.3));
+      box-shadow: var(--result-shadow, 0 0 25px rgba(color(danger), 0.5));
       
       &::after {
         content: '';
@@ -68,14 +75,14 @@ $border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        border: 2px solid rgba(color(danger), 0.1);
+        border: 2px solid var(--result-border-color-light, rgba(color(danger), 0.1));
         animation: pulse-ring 1.5s ease-out infinite;
       }
       
       i {
         font-size: font-size(xxxxl);
         color: color(danger);
-        filter: drop-shadow(0 0 8px rgba(color(danger), 0.5));
+        filter: var(--result-icon-shadow, drop-shadow(0 0 8px rgba(color(danger), 0.5)));
         animation: pulse 2s infinite;
       }
     }
