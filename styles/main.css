@@ -2359,15 +2359,15 @@ textarea:focus {
 .landing .infographic {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-  margin: 40px 0 48px;
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
 }
 .landing .infographic .stat {
   position: relative;
   background: rgba(15, 17, 21, 0.03);
-  padding: 32px 24px;
+  padding: 2rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: box-shadow(md);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow: hidden;
   border: 1px solid rgba(0, 122, 204, 0.1);
@@ -2383,15 +2383,15 @@ textarea:focus {
   left: 0;
   width: 5px;
   height: 100%;
-  background: linear-gradient(to bottom, #007acc, #004c80);
+  background: linear-gradient(to bottom, #007acc, #005c99);
   border-radius: 2.5px 0 0 2.5px;
 }
 .landing .infographic .stat::after {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 0.5rem;
+  right: 0.5rem;
   font-size: 1.8rem;
   color: rgba(0, 122, 204, 0.08);
   transition: all 0.3s ease;
@@ -2421,7 +2421,7 @@ textarea:focus {
   font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #007acc, #004c80);
   -webkit-background-clip: text;
   background-clip: text;
@@ -2431,8 +2431,6 @@ textarea:focus {
   position: relative;
   letter-spacing: -0.02em;
   filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.2));
-  font-weight: 500;
-  max-width: 90%;
 }
 .landing .infographic .stat p {
   font-size: 1.05rem;
@@ -2444,7 +2442,7 @@ textarea:focus {
 }
 .landing .infographic .stat p .source {
   display: block;
-  margin-top: 8px;
+  margin-top: 0.25rem;
   font-size: 0.85rem;
   color: #5d6778;
   font-weight: 400;
@@ -3193,139 +3191,3 @@ textarea:focus {
     margin: 0.5rem 0;
   }
 }/*# sourceMappingURL=main.css.map */
-
-/* SPECIAL INFOGRAPHIC STYLES */
-.infographic {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 40px 0 48px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-}
-
-.infographic .stat {
-  position: relative;
-  background: rgba(15, 17, 21, 0.03);
-  padding: 24px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  overflow: hidden;
-  border: 1px solid rgba(0, 122, 204, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
-  min-width: 200px;
-  max-width: 250px;
-}
-
-.infographic .stat::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: linear-gradient(to bottom, #007acc, #004c80);
-  border-radius: 2.5px 0 0 2.5px;
-}
-
-.infographic .stat::after {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 1.8rem;
-  color: rgba(0, 122, 204, 0.08);
-  transition: all 0.3s ease;
-}
-
-.infographic .stat[data-icon="shield-alt"]::after { content: '\f3ed'; }
-.infographic .stat[data-icon="chart-line"]::after { content: '\f201'; }
-.infographic .stat[data-icon="key"]::after { content: '\f084'; }
-.infographic .stat[data-icon="envelope"]::after { content: '\f0e0'; }
-
-.infographic .stat h2 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #007acc, #004c80);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: inline-block;
-  position: relative;
-  letter-spacing: -0.02em;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.2));
-}
-
-.infographic .stat p {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #222222;
-  margin-bottom: 0;
-  font-weight: 500;
-  max-width: 100%;
-  padding: 0 5px;
-}
-
-.infographic .stat .source {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.85rem;
-  color: #5d6778;
-  font-weight: 400;
-  opacity: 0.8;
-}
-
-.infographic .stat:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  background: rgba(0, 122, 204, 0.03);
-}
-
-.infographic .stat:hover::after {
-  transform: scale(1.2);
-  color: rgba(0, 122, 204, 0.12);
-}
-
-@media (max-width: 768px) {
-  .infographic {
-    padding-bottom: 12px;
-  }
-  
-  .infographic .stat {
-    min-width: 160px;
-  }
-  
-  .infographic .stat h2 {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .infographic {
-    padding-bottom: 16px;
-  }
-  
-  .infographic .stat {
-    min-width: 140px;
-    padding: 20px 15px;
-  }
-  
-  .infographic .stat h2 {
-    font-size: 2.2rem;
-  }
-  
-  .infographic .stat p {
-    font-size: 0.85rem;
-  }
-}
