@@ -2631,6 +2631,38 @@ textarea:focus {
   transform: none;
   box-shadow: none;
 }
+.password .mobile-only {
+  display: none;
+}
+@media (max-width: 768px) {
+  .password .mobile-only {
+    display: block;
+  }
+}
+.password .check-password-btn {
+  margin: 1rem auto 0;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.password .check-password-btn i {
+  margin-right: 8px;
+}
+.password .check-password-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.password .check-password-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 .password button.secondary-btn {
   padding: 0.85rem 1.8rem;
   font-size: 1.05rem;

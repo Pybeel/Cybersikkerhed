@@ -128,6 +128,12 @@ function initPasswordSimulation() {
       checkPassword();
     }
   });
+
+  // Tilføj klik-handler til check password knappen (for mobil)
+  const checkPasswordBtn = document.getElementById('checkPasswordBtn');
+  if (checkPasswordBtn) {
+    checkPasswordBtn.addEventListener('click', checkPassword);
+  }
   
   console.log("Kodeordssimulation initialiseret!");
 }
