@@ -326,7 +326,7 @@ function chooseOption(choice) {
   if (choice !== 'unsafe') {
     setTimeout(() => {
       goToNextScenario();
-    }, 5000);
+    }, 8000);
   }
 }
 
