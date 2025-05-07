@@ -21,7 +21,7 @@ function chooseOption(choice) {
   const nextBtn = document.getElementById('nextBtn');
 
   if (choice === 'unsafe') {
-    // Skab et databrud element der matcher strukturen fra kodeord.html
+    // Databrud skærmen
     const databrudElement = document.createElement('div');
     databrudElement.id = 'databrud-screen';
     databrudElement.className = 'password-result-screen';

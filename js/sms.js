@@ -38,7 +38,7 @@ function chooseOption(choice) {
     feedback.style.display = 'none';
     databrudScreen.style.display = 'block';
     
-    // Animér breach bar hvis den findes
+    // Animér breach bar 
     setTimeout(() => {
       const breachBar = databrudScreen.querySelector('.breach-bar');
       if (breachBar) {
@@ -79,7 +79,7 @@ function chooseOption(choice) {
       feedback.className = 'success';
       userPoints += 1; // 1 point for at slette
       
-      // Animate security meter
+      // Security Meter
       setTimeout(() => {
         const meterFill = document.querySelector('.meter-fill.delete-level');
         if (meterFill) meterFill.style.width = '70%';
@@ -124,7 +124,7 @@ function chooseOption(choice) {
       // Animate security meter
       setTimeout(() => {
         const meterFill = document.querySelector('.meter-fill.google-level');
-        if (meterFill) meterFill.style.width = '95%';
+        if (meterFill) meterFill.style.width = '100%';
       }, 100);
     }
     
