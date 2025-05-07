@@ -1,3 +1,52 @@
+/**
+ * Main.scss - Hovedstyling for Cybersikkerhedsprojekt
+ * ============================================
+ *
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Base Styling
+ *    - Reset/Normalize
+ *    - Typography
+ *    - Farver og variabler
+ *    - Grid system
+ * 
+ * 2. Layout Komponenter
+ *    - Header
+ *    - Navigation
+ *    - Main content
+ *    - Footer
+ * 
+ * 3. Moduler
+ *    - Knapper
+ *    - Kort
+ *    - Formularer
+ *    - Alerts
+ * 
+ * 4. Scenarier
+ *    - Mail (_mail.scss)
+ *    - WiFi (_wifi.scss)
+ *    - SMS (_sms.scss)
+ *    - Kodeord (_kodeord.scss)
+ *    - Resultat (_result.scss)
+ * 
+ * 5. Utilities
+ *    - Spacing
+ *    - Flexbox helpers
+ *    - Tekst utilities
+ * 
+ * 6. Responsivt Design
+ *    - Breakpoints
+ *    - Media queries
+ *    - Print styles
+ *
+ * Metodologi:
+ * -----------
+ * - BEM navngivning
+ * - Mobile-first approach
+ * - SCSS moduler og partials
+ * - Responsive units (rem/em)
+ */
+
 // Importer basissystemer 
 @import 'base';
 @import 'mixins';
@@ -9,4 +58,4 @@
 @import 'mail';
 @import 'kodeord';
 @import 'landing';
-@import 'result';
+@import 'resultat';

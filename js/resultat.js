@@ -1,7 +1,58 @@
+/**
+ * Resultat.js - Hovedmodul for resultatvisning og evaluering
+ * ====================================================
+ * 
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Initialisering og Opsætning
+ *    - Event listeners
+ *    - Konstanter og variabler
+ *    - Point system konfiguration
+ * 
+ * 2. Data Håndtering
+ *    - Local Storage funktioner
+ *    - Scenarie data struktur
+ *    - Point beregning
+ * 
+ * 3. UI Opdatering
+ *    - Progress bar animation
+ *    - Sikkerhedsniveau visning
+ *    - Resultat feedback
+ * 
+ * 4. Visualiseringer
+ *    - Cirkeldiagram generering
+ *    - Statistik visning
+ *    - Performance oversigt
+ * 
+ * 5. Bruger Feedback
+ *    - Personlige anbefalinger
+ *    - Forbedringsområder
+ *    - Tips generering
+ * 
+ * 6. Hjælpefunktioner
+ *    - Animation utilities
+ *    - Data formattering
+ *    - DOM manipulation
+ * 
+ * Point System:
+ * -------------
+ * - Kodeord: 6 points (1 point per sikkerhedskrav)
+ * - Mail: 3 points (1 point per korrekt håndtering)
+ * - Wifi: 2 points (2 for sikker mobil, 1 for VPN)
+ * - SMS: 2 points (2 for verificering, 1 for sletning)
+ * 
+ * Maksimalt opnåelige point: 13
+ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Hent brugerens point og scenariedata fra localStorage
+  /**
+   * Point system:
+   * - Kodeord: 6 points (1 point per sikkerhedskrav)
+   * - Mail: 3 points (1 point per korrekt håndtering)
+   * - Wifi: 2 points (2 for sikker mobil, 1 for VPN)
+   * - SMS: 2 points (2 for verificering, 1 for sletning)
+   */
   const points = parseInt(localStorage.getItem('userPoints')) || 0;
-  const maxPoints = 13; // maksimalt antal opnåelige point efter optimering
+  const maxPoints = 13; // Maksimalt antal opnåelige point
   // Mail: 3 points (1 per clickable)
   // Wifi: 2 points (2 for mobile, 1 for VPN)
   // Kodeord: 6 points (1 per opfyldt krav)
@@ -11,11 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hent scenariedata
   let scenarieData = [];
   try {
+    /**
+     * Forsøg at hente gemte scenariedata
+     * Håndterer både nye og eksisterende sessioner
+     */
     const savedData = localStorage.getItem('scenarieData');
     if (savedData) {
-      scenarieData = JSON.parse(savedData);
+      try {
+        scenarieData = JSON.parse(savedData);
+        // Valider data struktur
+        if (!Array.isArray(scenarieData) || !scenarieData.every(scene => 
+          scene.navn && typeof scene.score === 'number' && typeof scene.maxScore === 'number'
+        )) {
+          throw new Error('Ugyldig data struktur');
+        }
+      } catch (parseError) {
+        console.error('Fejl ved parsing af scenariedata:', parseError);
+        throw new Error('Kunne ikke læse gemte data');
+      }
     } else {
-      // Standard scenariedata hvis intet er gemt
+      // Initialiser med standard scenariedata
       scenarieData = [
         { 
           navn: 'Kodeord', 
@@ -52,8 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
     }
   } catch (e) {
-    console.error('Fejl ved indlæsning af scenariedata:', e);
-    // Fallback data
+    console.error('Fejl ved håndtering af scenariedata:', e);
+    // Log detaljeret fejlinformation
+    console.debug('Fejldetaljer:', {
+      message: e.message,
+      stack: e.stack,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Brug sikker fallback data
     scenarieData = [
       { 
         navn: 'Kodeord', 
@@ -90,7 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
   }
 
-  // Beregn samlede resultater
+  /**
+   * Beregn samlet score og procentvis fremgang
+   * Bruger vægtet scoring system baseret på scenariernes vigtighed
+   */
   const totalScore = scenarieData.reduce((acc, scene) => acc + scene.score, 0);
   const totalMaxScore = scenarieData.reduce((acc, scene) => acc + scene.maxScore, 0);
   const totalPercent = Math.round((totalScore / totalMaxScore) * 100);

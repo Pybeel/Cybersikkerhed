@@ -1,26 +1,72 @@
-// Resultatside styling 
-// Bruger variabler fra _base.scss i stedet for hardkodede værdier
+/**
+ * Resultatside Styling (_result.scss)
+ * ================================
+ *
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Design System
+ *    - Farvevariabler
+ *    - Skygger og spacing
+ *    - Custom properties
+ * 
+ * 2. Layout Komponenter
+ *    - Hovedcontainer (.result-container)
+ *    - Resultatskærm (.result)
+ *    - Databrud besked (.databrud-message)
+ * 
+ * 3. Visualiseringer
+ *    - Progress bar
+ *    - Sikkerhedsmeter
+ *    - Cirkeldiagram
+ * 
+ * 4. Interaktive Elementer
+ *    - Knapper
+ *    - Hover effekter
+ *    - Feedback ikoner
+ * 
+ * 5. Animationer
+ *    - Fade effekter
+ *    - Progress animationer
+ *    - Pulse effekter
+ * 
+ * 6. Responsivt Design
+ *    - Tablet layout
+ *    - Mobil layout
+ *    - Breakpoints
+ *
+ * Metodologi:
+ * -----------
+ * - Bruger BEM (Block Element Modifier) for navngivning
+ * - CSS Custom Properties for dynamisk styling
+ * - Flexbox/Grid for layout
+ * - Mobile-first tilgang til responsivt design
+ */
 
-// Lokale referencer til globale variabler for nemmere brug
-$bg-card: rgba(15, 17, 21, 0.6); // Bevarer præcis samme farve som originalen
-$border-light: rgba(255, 255, 255, 0.1); // Bevarer præcis samme farve
+// Design System Variables
+$bg-card: rgba(15, 17, 21, 0.95);
+$border-light: rgba(255, 255, 255, 0.12);
 
-// Resultat status farver
+// Enhanced Color System
 $status-colors: (
-  success: #28a745, // Sikker bruger
-  warning: #ffc107, // Moderat sikker
-  danger: #dc3545   // Usikker bruger
+  success: #2ecc71, // Sikker bruger - Mere moderne grøn
+  warning: #f39c12, // Moderat sikker - Varmere orange
+  danger: #e74c3c    // Usikker bruger - Mere distinkt rød
 );
 
+// CSS Custom Properties for Dynamic Theming
 :root {
   --primary-rgb: 0, 86, 179;
+  --animation-timing: 0.3s;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+// Main Container
 .result-container {
-  max-width: 800px;
-  margin: auto;
-  margin-top: 50px;
-  padding: 0.5rem;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1rem;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .result {
@@ -695,29 +741,49 @@ $status-colors: (
   }
 }
 
-// Animationer
+// Modern Animations
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1); filter: brightness(100%); }
+  50% { transform: scale(1.05); filter: brightness(110%); }
+  100% { transform: scale(1); filter: brightness(100%); }
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 0.4; }
-  100% { transform: scale(0.95); opacity: 0.8; }
+  0% { transform: scale(0.95); opacity: 0.8; filter: blur(0px); }
+  50% { transform: scale(1.05); opacity: 0.4; filter: blur(1px); }
+  100% { transform: scale(0.95); opacity: 0.8; filter: blur(0px); }
 }
 
 @keyframes shake {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px) rotate(-1deg); }
+  20%, 40%, 60%, 80% { transform: translateX(4px) rotate(1deg); }
 }
 
 @keyframes breach-grow {
-  0% { width: 0%; }
-  100% { width: 94%; }
+  0% { width: 0%; filter: brightness(80%); }
+  50% { filter: brightness(120%); }
+  100% { width: 100%; filter: brightness(100%); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+// Smooth transitions
+.scenarie-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
 }
 
 // Responsivt design

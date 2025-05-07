@@ -1,5 +1,50 @@
+/**
+ * SMS Sikkerhedsscenarie
+ * ===================
+ *
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Initialisering
+ *    - Event listeners
+ *    - Progress bar (100%)
+ *    - Tilstandsvariabler
+ * 
+ * 2. Bruger Input
+ *    - Valg håndtering
+ *    - Element skjul/vis
+ *    - Animation timing
+ * 
+ * 3. Feedback System
+ *    - Success feedback
+ *      - Google søgning (2p)
+ *      - Slet besked (1p)
+ *    - Fejl feedback
+ *      - Databrud visning
+ *      - Sikkerhedsbrud animation
+ * 
+ * 4. UI Komponenter
+ *    - Sikkerhedsmeter
+ *    - Success ikoner
+ *    - Resultat knap
+ * 
+ * 5. Data Håndtering
+ *    - Point system
+ *    - Scenarie data
+ *    - Local Storage
+ * 
+ * 6. Navigation
+ *    - Resultatside
+ *    - Afslutning
+ *
+ * Point System:
+ * -------------
+ * - Google/Verificer: 2 point (bedste valg)
+ * - Slet besked: 1 point (acceptabelt valg)
+ * - Klik på link: 0 point (usikkert valg)
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
-  setProgress(100);
+  setProgress(100); // Sæt progress bar til 100% (sidste scenarie)
 });
 
 function setProgress(percent) {

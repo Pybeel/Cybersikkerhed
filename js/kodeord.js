@@ -1,5 +1,51 @@
 // Kodeord.js - Interaktiv kodeordssimulation
 
+/**
+ * Kodeord Sikkerhedsscenarie
+ * =======================
+ *
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Initialisering
+ *    - DOM elementer
+ *    - Event listeners
+ *    - Password validering
+ * 
+ * 2. Password Validering
+ *    - Kompleksitetscheck
+ *    - Styrkeberegning
+ *    - Real-time feedback
+ * 
+ * 3. Sikkerhedskrav
+ *    - Længde (min. 8 tegn)
+ *    - Store/små bogstaver
+ *    - Tal og specialtegn
+ *    - Gentagelser
+ * 
+ * 4. UI Feedback
+ *    - Styrkeindikator
+ *    - Validering ikoner
+ *    - Fejlmeddelelser
+ * 
+ * 5. Data Håndtering
+ *    - Point beregning
+ *    - Scenarie data
+ *    - Local Storage
+ * 
+ * 6. Navigation
+ *    - Resultatside
+ *    - Progression
+ *
+ * Point System:
+ * -------------
+ * - Længde: 1 point
+ * - Store/små bogstaver: 1 point
+ * - Tal: 1 point
+ * - Specialtegn: 1 point
+ * - Ingen gentagelser: 1 point
+ * - Ekstra styrke: 1 point
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
   setProgress(75); // brug 25, 50, 75, 100 afhængigt af scenarie
   initPasswordSimulation();

@@ -1,5 +1,47 @@
+/**
+ * WiFi Sikkerhedsscenarie
+ * ====================
+ *
+ * Indholdsfortegnelse:
+ * -------------------
+ * 1. Initialisering
+ *    - Event listeners
+ *    - Progress bar opsætning
+ *    - Variabel initialisering
+ * 
+ * 2. Bruger Interaktion
+ *    - Valg håndtering (chooseOption)
+ *    - Feedback visning
+ *    - Animation triggering
+ * 
+ * 3. Sikkerhedsfeedback
+ *    - Sikker mobilnetværk (2 point)
+ *    - VPN løsning (1 point)
+ *    - Usikker WiFi (0 point + databrud)
+ * 
+ * 4. Visuelle Elementer
+ *    - Sikkerhedsmeter
+ *    - Success/fejl ikoner
+ *    - Databrud animation
+ * 
+ * 5. Data Håndtering
+ *    - Point beregning
+ *    - Local Storage
+ *    - Scenarie data
+ * 
+ * 6. Navigation
+ *    - Automatisk progression
+ *    - Næste scenarie
+ *
+ * Point System:
+ * -------------
+ * - Mobilnetværk: 2 point (bedste valg)
+ * - VPN: 1 point (acceptabelt valg)
+ * - Usikret WiFi: 0 point (usikkert valg)
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
-  setProgress(50); 
+  setProgress(50); // Sæt progress bar til 50%
 });
 
 function setProgress(percent) {

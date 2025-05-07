@@ -1,3 +1,24 @@
+<!--
+  Resultatside for Cybersikkerhedsøvelsen
+  ====================================
+  
+  Denne side viser brugerens samlede resultater og sikkerhedsniveau.
+  Indeholder:
+  - Samlet sikkerhedsscore med visuel feedback
+  - Interaktivt cirkeldiagram med scenarie-performance
+  - Detaljeret oversigt over forbedringsområder
+  - Personlige sikkerhedstips baseret på brugerens valg
+  
+  Visualiseringer:
+  - Progress bar for samlet sikkerhedsniveau
+  - Cirkeldiagram for scenarie-fordeling
+  - Farvekodede ikoner for feedback
+  
+  Teknisk:
+  - Bruger Font Awesome for ikoner
+  - Styling via main.css og _result.scss
+  - Data håndteres via resultat.js
+-->
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -9,9 +30,12 @@
   <!-- Al styling kommer nu fra styles/main.css, som inkluderer den optimerede _result.scss -->
 </head>
 <body>
+  <!-- Hovedcontainer for resultatvisning -->
   <main class="result-container">
+    <!-- Resultatskærm med dynamisk indhold baseret på score -->
     <div id="databrud-screen" class="result">
-      <!-- Warning Icon og Hovedbesked -->
+      <!-- Overordnet resultatvisning med ikon og hovedbesked -->
+      <!-- Viser forskellig feedback baseret på brugerens samlede score -->
       <div class="databrud-message">
         <div class="warning-icon">
           <i class="fas fa-exclamation-triangle" id="resultIcon"></i>
@@ -21,7 +45,8 @@
         <p id="explanation"></p>
       </div>
 
-      <!-- Resultat Visualisering -->
+      <!-- Progress bar og sikkerhedsniveau indikator -->
+      <!-- Animeret visualisering af brugerens samlede score -->
       <div class="breach-visualization">
         <div class="breach-data">
           <div class="breach-progress">
@@ -31,7 +56,8 @@
         </div>
       </div>
 
-      <!-- Samlet Resultatoversigt -->
+      <!-- Detaljeret resultatoversigt med cirkeldiagram -->
+      <!-- Viser performance for hvert scenarie og forbedringsområder -->
       <div class="results-dashboard">
         <h3>Din Samlede Sikkerhedsoversigt</h3>
         <div class="dashboard-content">
@@ -54,9 +80,8 @@
         </div>
       </div>
 
-      <!-- Bemærk: Scenarie Performance Oversigt og Personlige Sikkerhedstips er fjernet -->
-
-      <!-- Handlings Knapper -->
+      <!-- Navigation og handlingsknapper -->
+      <!-- Giver mulighed for at prøve øvelsen igen -->
       <div class="action-buttons">
         <button id="tryAgainBtn" onclick="restart()" style="margin-top: 2rem; padding: 0.75rem 2rem; font-size: 1.1rem; background: linear-gradient(to right, #007acc, #005fa3); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">Prøv igen</button>
       </div>
