@@ -2349,7 +2349,7 @@ textarea:focus {
   color: #5d6778;
 }
 .password .password-strength {
-  width: 85%;
+  width: 100%;
   margin: 1.2rem auto;
   height: 10px;
   background: #f1f3f5;

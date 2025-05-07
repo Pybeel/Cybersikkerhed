@@ -1,5 +1,5 @@
 .mail {
-  // Anvender container og card mixins fra vores system
+  // Anvender container og card mixins fra system
   @include container(800px);
   @include card;
 

@@ -44,18 +44,6 @@ En interaktiv læringsplatform om cybersikkerhed udviklet til at øge bevidsthed
 - Font Awesome ikoner
 - Responsive design
 
-### Installation og Kørsel
-1. Klón projektet
-2. Installer SASS hvis det ikke er installeret:
-   ```bash
-   npm install -g sass
-   ```
-3. Kompilér SCSS til CSS:
-   ```bash
-   sass styles/main.scss styles/main.css
-   ```
-4. Åbn `index.html` i en browser
-
 ### Vedligeholdelse
 - SCSS filer skal kompileres ved ændringer
 - JavaScript filer er modulære og selvstændige

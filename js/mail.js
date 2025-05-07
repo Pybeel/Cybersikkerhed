@@ -1,50 +1,4 @@
-/**
- * Mail Sikkerhedsscenarie
- * ====================
- *
- * Indholdsfortegnelse:
- * -------------------
- * 1. Initialisering
- *    - DOM elementer
- *    - Event listeners
- *    - Phishing indikatorer
- * 
- * 2. Bruger Interaktion
- *    - Klik håndtering
- *    - Markering af elementer
- *    - Feedback visning
- * 
- * 3. Point System
- *    - Score beregning
- *    - Phishing validering
- *    - Resultat tracking
- * 
- * 4. UI Elementer
- *    - Highlight system
- *    - Tooltip visning
- *    - Success/fejl ikoner
- * 
- * 5. Data Håndtering
- *    - Local Storage
- *    - Scenarie progression
- *    - Statistik opdatering
- * 
- * 6. Hjælpefunktioner
- *    - Element validering
- *    - Animation utilities
- *    - Event handlers
- *
- * Point System:
- * -------------
- * - Korrekt phishing-tegn: 1 point per tegn (max 3)
- * - Forkert markering: 0 point
- * 
- * Phishing Indikatorer:
- * --------------------
- * 1. Afsenderadresse
- * 2. Stavefejl/grammatik
- * 3. Mistænkeligt link
- */
+
 
 document.addEventListener("DOMContentLoaded", () => {
     setProgress(25); // brug 25, 50, 75, 100 afhængigt af scenarie
@@ -116,7 +70,7 @@ function setProgress(percentage) {
     localStorage.setItem("userPoints", userPoints);
     
     // Gem scenarieData i localStorage
-    
+
 let scenarieData = [];
     try {
       const savedData = localStorage.getItem('scenarieData');
